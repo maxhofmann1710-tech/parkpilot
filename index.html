@@ -1024,7 +1024,7 @@ function musTick(){if(!AU.on||!MUS.on||SET.vMu<=0)return;var c=AU.ctx,now=c.curr
   MUS.t+=spb;MUS.bar++}}
 
 /* ===== Speicher, Sprache, Einstellungen ===== */
-var VER="1.8.1",BUILD="15.11.2026",DEV="Engelcode";
+var VER="1.9.0",BUILD="16.11.2026",DEV="Engelcode";
 function rd(k,d){try{var v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}}
 function wr(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 var DEF={vRad:70,cstyle:"normal",cb:"off",glow:1,shakeI:1,pix:true,viol:1,polL:2,wxMode:"auto",realism:"arcade",weather:true,xh:true,xhs:"ring",xhc:"#ffffff",xhz:9,camD:100,hudL:{},q:"auto",rs:100,autoRes:true,sh:1,dist:420,fx:true,spec:true,mirror:true,aa:true,fps:60,showFps:false,eco:false,vM:80,vE:75,vS:85,vMu:40,ctl:"wheel",sens:100,assist:true,lefty:false,vib:true,unit:"kmh",fov:72,cam:"chase",mm:true,lang:"en",shake:true,
@@ -2805,6 +2805,7 @@ function ecMark(w){return '<svg class="ecm" viewBox="0 0 140 70" width="'+w+'" h
 }catch(e){console.warn(e)}})();
 /* Neuigkeiten – neueste zuerst. Texte: [Deutsch, Englisch, Russisch] */
 var CHANGELOG=[
+ {v:"1.9.0",d:"16.11.2026",n:[["Online-Mehrspieler: feste Server für jede Map auf Englisch, Deutsch und Russisch","Online multiplayer: official servers for every map in English, German and Russian","Онлайн-мультиплеер: официальные серверы для каждой карты на английском, немецком и русском"],["Eigene Räume: Map, bis zu 25 Spieler, öffentlich oder privat, mit Passwort","Own rooms: map, up to 25 players, public or private, with password","Свои комнаты: карта, до 25 игроков, публичные или приватные, с паролем"],["Chat, Spielerliste und Namen über den Köpfen – Mitspieler auch zu Fuß sichtbar","Chat, player list and names above heads – other players visible on foot too","Чат, список игроков и имена над головами – игроков видно и пешком"],["Online-Rennen ab 2 Spielern mit 10-Sekunden-Countdown","Online races with 2+ players and a 10-second countdown","Онлайн-гонки от 2 игроков с обратным отсчётом 10 секунд"],["Gangs gründen (200.000 $) oder beitreten – Kürzel über dem Kopf und im Chat","Found ($200,000) or join gangs – tag above your head and in chat","Основывай банды (200 000 $) или вступай – тег над головой и в чате"],["Geldkoffer-Event: alle 3 Minuten – wer zuerst da ist, bekommt 2.500 $","Cash case event: every 3 minutes – first one there gets $2,500","Событие с кейсом: каждые 3 минуты – первый получает 2 500 $"]]},
  {v:"1.8.1",d:"16.11.2026",n:[["Navi: Route zum Wegpunkt und zu Aufträgen auf Karte und Straße","Navigation: route to waypoints and jobs on the map and on the road","Навигатор: маршрут к метке и заданиям на карте и дороге"],["Drag Race: vor dem Start Gas geben ohne Frühstart, Ampel verschwindet nach dem Start","Drag race: rev before the start without a false start, lights disappear after the start","Драг: газ до старта без фальстарта, светофор исчезает после старта"],["Straßen werden bei flacher Kamera nicht mehr weiß","Roads no longer turn white at low camera angles","Дороги больше не белеют при низкой камере"],["Englisch und Russisch: rund 200 fehlende Übersetzungen ergänzt","English and Russian: about 200 missing translations added","Английский и русский: добавлено около 200 переводов"]]},
  {v:"1.8.0",d:"16.11.2026",n:[["Einsteigen über die Tür: erst öffnen, dann einsteigen – Tür schließt von selbst, mit Hand-Animation","Get in via the door: open it first, then get in – it closes by itself, with hand animation","Посадка через дверь: открыть, сесть – дверь закрывается сама"],["Hände am Lenkrad in der Cockpit-Ansicht, neue Sprung- und Gehanimationen","Hands on the wheel in cockpit view, new jump and walk animations","Руки на руле в кабине, новые анимации прыжка и ходьбы"],["Zielen mit Waffen (🎯): Schulterkamera, Zoom, präzise Schüsse","Aim with weapons (🎯): over-the-shoulder camera, zoom, precise shots","Прицеливание (🎯): камера из-за плеча, зум, точные выстрелы"],["Erst anschauen, dann kaufen: Kleidung anprobieren, Tiere und Waffen in 3D","Look before you buy: try on clothes, view pets and weapons in 3D","Сначала посмотреть, потом купить: примерка, питомцы и оружие в 3D"],["60 Park-Level: neues Kapitel Meister, Zäune, mehr Autos und Fußgänger","60 parking levels: new Master chapter, fences, more cars and pedestrians","60 уровней: глава Мастер, заборы, больше машин и людей"],["Echter Slalom mit Pylonen-Toren und Strafzeiten","Real slalom with cone gates and time penalties","Настоящий слалом с конусами и штрафами"],["Stadt: rote Radwege, Zebrastreifen, zwei Kreisverkehre","City: red bike lanes, zebra crossings, two roundabouts","Город: велодорожки, зебры, две круговые развязки"]]},
  {v:"1.7.1",d:"16.11.2026",n:[["Startet jetzt auf Englisch – Sprachumschalter unten links im Menü","Starts in English now – language switch at the bottom left of the menu","Теперь запуск на английском – переключатель языка внизу слева"],["Sonne, Mond und ziehende Wolken, blauerer Himmel","Sun, moon and drifting clouds, bluer sky","Солнце, луна и облака, более синее небо"],["Dellen durch Schläge und Unfälle, weniger Schaden","Dents from punches and crashes, less damage","Вмятины от ударов и аварий, меньше урона"],["Eigenes Auto lässt sich zu Fuß nicht mehr schieben","Your car can no longer be pushed on foot","Свою машину больше нельзя толкать пешком"],["Leute halten mehr aus, fallen beim Schlagen manchmal um und stehen wieder auf","People are tougher, sometimes fall when punched and get back up","Люди крепче, иногда падают от ударов и встают"],["Türen und Kofferraum einzeln öffnen, Radio-Lautstärkeregler","Open doors and trunk one by one, radio volume slider","Двери и багажник по отдельности, громкость радио"]]},
@@ -3235,6 +3236,336 @@ function trAll(root){if(!root||SET.lang==="de")return;var D=SET.lang==="en"?EN:R
  list.forEach(function(t){var v=t.nodeValue,s=v.trim();if(!s||s.length>200)return;var r=D[s];if(r&&r!==s){t.nodeValue=v.replace(s,r);return}var m=s.match(/^([←-⯿\uD83C-􏰀-\uDFFF☀-➿️\s]+)(.+)$/);if(m&&D[m[2].trim()])t.nodeValue=v.replace(m[2].trim(),D[m[2].trim()])})}
 (function(){var obs;try{obs=new MutationObserver(function(ms){if(SET.lang==="de")return;if(obs._busy)return;obs._busy=1;try{ms.forEach(function(m){m.addedNodes.forEach(function(nd){if(nd.nodeType===1)trAll(nd);else if(nd.nodeType===3&&nd.parentNode)trAll(nd.parentNode)})})}finally{obs._busy=0}});
  ["pg","garage","dlg","menu","pause","res"].forEach(function(id){var e=$(id);if(e)obs.observe(e,{childList:true,subtree:true})})}catch(e){}})();
+
+/* ===== Online-Modus: Lobbys (feste EN/DE/RU + öffentliche + private), Spieler zu Fuß, Namen, Chat, Rennen, Gangs, Geldkoffer-Event ===== */
+var ON={off:0,chat:[],race:null,gang:null,lk:0,rs:null,fin:0,ev:{},evMesh:null,tags:{},lastMsg:0,seenRace:"",lob:null};
+var FL={en:"🇬🇧",de:"🇩🇪",ru:"🇷🇺"},MPMAX=25;
+function mapOf(id){return MAPS.filter(function(m){return m.id===id})[0]||MAPS[0]}
+function fixedOf(id){var m=/^M([a-z]+)_(en|de|ru)$/.exec(id||"");if(!m)return null;var mp=mapOf(m[1]);if(mp.id!==m[1])return null;return{map:mp.id,max:MPMAX,n:mp.icon+" "+T(mp.n)+" "+FL[m[2]],fixed:1,l:m[2]}}
+function onNow(){return Date.now()+(ON.off||0)}
+function onName(){return (PD.prof&&PD.prof.name||"Gast").slice(0,16)}
+function onAuth(cb){if(!mpReady()){toast(T("Server nicht erreichbar"),2000);return}var au=firebase.auth();if(au.currentUser){cb(au.currentUser.uid);return}
+ au.signInAnonymously().then(function(r){cb(r.user.uid)}).catch(function(e){toast(((e&&e.code)||"").indexOf("admin-restricted")>=0?T("Bitte zuerst im Profil anmelden"):T("Server nicht erreichbar"),2600)})}
+function onHash(s){var h=2166136261;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function onRoadPt(seed){var w=G.world,g=w&&w.gridp;if(!g){var cs=w&&(w.route&&w.route.length?w.route.map(function(q){return{x:q[0],z:q[1]}}):w.coins);if(!cs||!cs.length)return null;var o=cs[seed%cs.length];return[o.x,o.z]}var q=function(i){return g.O+i*g.C+g.RW/2},i=seed%(g.N+1),j=(seed>>>4)%g.N,f=((seed>>>9)%60)/100+.2;
+ return (seed>>>3)%2?[q(i)+3.5,q(j)+g.C*f]:[q(j)+g.C*f,q(i)-3.5]}
+
+/* --- Beitreten --- */
+mpJoin=function(room,meta,pw){onAuth(function(uid){var db=firebase.database(),fx=fixedOf(room);
+ if(fx){go(fx);return}
+ if(meta&&meta.create){var m={n:meta.n,map:meta.map,max:meta.max,pub:meta.pub?1:0,pw:meta.pw?onHash("pp:"+meta.pw):0,host:uid,hn:onName(),l:SET.lang||"en",t:firebase.database.ServerValue.TIMESTAMP};
+  db.ref("rooms/"+room+"/meta").set(m).then(function(){if(m.pub)db.ref("lobbies/"+room).set({n:m.n,map:m.map,max:m.max,pw:m.pw?1:0,hn:m.hn,l:m.l,t:firebase.database.ServerValue.TIMESTAMP});go(m)}).catch(function(){toast(T("Server nicht erreichbar"),2000)});return}
+ db.ref("rooms/"+room+"/meta").once("value").then(function(s){var m=s.val();if(!m){toast(T("Raum nicht gefunden"),2000);return}
+  if(m.pw&&onHash("pp:"+(pw||""))!==m.pw){dlg("<h3>🔒 "+esc(m.n||room)+'</h3><input type="password" id="rpw" maxlength="20" placeholder="'+esc(T("Passwort"))+'">'+(pw!=null?'<p class="tip" style="color:#ff6b6b">'+esc(T("Falsches Passwort"))+"</p>":""),[[T("Abbrechen"),"",null],[T("Beitreten"),"pri",function(){mpJoin(room,null,$("rpw").value||"")}]]);return}go(m)}).catch(function(){toast(T("Server nicht erreichbar"),2000)});
+ function go(m){var max=Math.max(2,Math.min(MPMAX,m.max||MPMAX));db.ref("rooms/"+room+"/p").once("value").then(function(s){var n=s.numChildren();if(n>=max&&!s.hasChild(uid)){toast(T("Lobby ist voll")+" ("+max+")",2200);return}
+  MP.uid=uid;if(!ACC.uid)ACC.uid=uid;MP.db=db;MP.room=room;MP.meta=m;MP.max=max;ON.chat=[];ON.race=null;ON.rs=null;ON.fin=0;ON.ev={};ON.seenRace="";ON.cur=null;ON.last=null;
+  var mp=mapOf(m.map);prepGame("mp",{tod:"day"});mapWorld(mp.id,function(){enterGame();toast(m.fixed?m.n:(m.pub?"🌍 ":"🔒 ")+(m.n||room)+" · "+T("Code")+" "+room,3000);onStart(m)},SET.traffic?10:0)}).catch(function(){toast(T("Server nicht erreichbar"),2000)})}})};
+function m200(){return (200000).toLocaleString(SET.lang==="en"?"en-US":SET.lang==="ru"?"ru-RU":"de-DE")+" $"}
+function onStart(meta){var db=MP.db,R=db.ref("rooms/"+MP.room);MP.R=R;
+ try{var c0=G.car,k0=Math.floor(Math.random()*6),sd=Math.random()<.5?0:1;c0.x-=Math.sin(c0.h)*k0*8+Math.cos(c0.h)*sd*3.2;c0.z-=Math.cos(c0.h)*k0*8-Math.sin(c0.h)*sd*3.2;c0.vx=c0.vz=c0.vf=0;G.camP=null}catch(e){}
+ db.ref(".info/serverTimeOffset").on("value",function(s){ON.off=s.val()||0});
+ MP.ref=R.child("p");var me=MP.ref.child(MP.uid);me.onDisconnect().remove();
+ var st={};try{st=meStyle()}catch(e){}var l=lvlOf?lvlOf(PD.xp||0):null;
+ ON.stat="";me.set({x:+G.car.x.toFixed(1),z:+G.car.z.toFixed(1),h:0,v:0,c:G.car.d.id,p:G.car.paint,n:onName(),st:JSON.stringify(st),lv:l&&l.lv||1,g:ON.gang?ON.gang.tag:"",gc:ON.gang?ON.gang.col:"",t:onNow()});
+ MP.ref.on("child_added",mpUpd);MP.ref.on("child_changed",mpUpd);MP.ref.on("child_removed",function(s){mpDrop(s.key)});
+ R.child("chat").limitToLast(25).on("child_added",function(s){var v=s.val();if(!v||!v.m)return;ON.chat.push(v);if(ON.chat.length>25)ON.chat.shift();if(onNow()-(v.t||0)<20000)feed(v.n,v.m,v.g,v.gc,v.u);if($("mpChatL"))chatList()});
+ R.child("race").on("value",function(s){raceUpd(s.val())});
+ R.child("ev").limitToLast(4).on("child_added",evUpd);R.child("ev").limitToLast(4).on("child_changed",evUpd);
+ if(meta&&meta.pub&&!meta.fixed)ON.lob=db.ref("lobbies/"+MP.room);
+ try{db.ref("public/"+MP.uid).update({n:onName(),lv:l&&l.lv||1,g:ON.gang?ON.gang.tag:"",t:firebase.database.ServerValue.TIMESTAMP})}catch(e){}
+ onHud(true)}
+function mpDrop(k){var r=G.remote[k];if(r&&r.car){r.car.free();var d=G.world&&G.world.dyn,i=d?d.indexOf(r.car):-1;if(i>=0)d.splice(i,1)}delete G.remote[k];var t=ON.tags[k];if(t){t.remove();delete ON.tags[k]}}
+mpUpd=function(s){if(s.key===MP.uid)return;var v=s.val();if(!v||v.x==null)return;var r=G.remote[s.key];
+ if(!r||r.c!==v.c||r.p!==v.p){if(r)mpDrop(s.key);var d=carDef(v.c)||CARS[0];r=G.remote[s.key]={car:new Car(d,{paint:v.p||d.col,t:{}},1),c:v.c,p:v.p,ph:0};r.car.mov=true;r.car.kind="rp";r.car.x=v.x;r.car.z=v.z;r.car.h=v.h||0;G.world.dyn.push(r.car);r.fx=v.x;r.fz=v.z;r.fh=v.h}
+ if(v.st&&v.st!==r.stS){r.stS=v.st;try{var o=JSON.parse(v.st);if(o&&o.skin){RIGS["r_"+s.key]=o;delete RIGC["r_"+s.key]}}catch(e){}}
+ var wasF=r.f;r.f=v.f?1:0;r.n=v.n;r.g=v.g;r.gc=v.gc;r.lv=v.lv;r.bl=v.b;r.li=v.l;r.sr=v.sr;r.ts=v.t;
+ if(r.f){r.tx2=v.x;r.tz2=v.z;r.th2=v.h;r.pv=v.v||0;if(!wasF){r.fx=v.x;r.fz=v.z;r.fh=v.h}if(v.cx!=null){r.tx=v.cx;r.tz=v.cz;r.th=v.ch;r.v=0}}
+ else{r.tx=v.x;r.tz=v.z;r.th=v.h;r.v=v.v;if(wasF&&r.car){r.car.x=v.x;r.car.z=v.z;r.car.h=v.h}}};
+mpTick=function(dt){MP.t+=dt;var c=G.car,P=G.P,foot=onFoot();
+ if(MP.ref&&MP.t>.2){var u={},L=ON.last||{},now0=onNow(),sv=foot?Math.hypot(P.vx,P.vz):c.vf;
+  if(foot){u.f=1;u.x=+P.x.toFixed(1);u.z=+P.z.toFixed(1);u.h=+P.h.toFixed(2);u.v=+sv.toFixed(1);u.cx=+c.x.toFixed(1);u.cz=+c.z.toFixed(1);u.ch=+c.h.toFixed(2)}
+  else{u.f=0;u.x=+c.x.toFixed(1);u.z=+c.z.toFixed(1);u.h=+c.h.toFixed(2);u.v=+sv.toFixed(1)}
+  u.b=c.blink||0;u.l=c.lights?1:0;u.sr=c.siren?1:0;
+  var stat=[c.d.id,c.paint,onName(),ON.gang?ON.gang.tag:"",ON.gang?ON.gang.col:""].join("|");if(stat!==ON.stat){ON.stat=stat;u.c=c.d.id;u.p=c.paint;u.n=onName();u.g=ON.gang?ON.gang.tag:"";u.gc=ON.gang?ON.gang.col:""}
+  var d={};Object.keys(u).forEach(function(k){if(L[k]!==u[k])d[k]=u[k]});var moving=Math.abs(sv)>.2||d.f!=null;
+  if(Object.keys(d).length&&(moving||MP.t>1)||now0-(ON.lt||0)>3000){if(now0-(ON.lt||0)>2500){d.t=now0;ON.lt=now0}MP.t=0;ON.last=u;MP.ref.child(MP.uid).update(d)}}
+ var f=Math.min(1,dt*6),now=onNow();
+ Object.keys(G.remote).forEach(function(k){var r=G.remote[k],a=r.car;if(!a)return;if(r.ts&&now-r.ts>20000){mpDrop(k);return}
+  if(r.tx!=null){a.x+=(r.tx-a.x)*f;a.z+=(r.tz-a.z)*f;var dh=Math.atan2(Math.sin(r.th-a.h),Math.cos(r.th-a.h));a.h+=dh*f;a.vf=r.v;a.spin+=r.v*dt/a.d.wr;a.blink=r.bl;a.lights=r.li;a.siren=r.sr;a.c=Math.cos(a.h);a.s=Math.sin(a.h)}
+  if(r.f&&r.tx2!=null){r.fx+=(r.tx2-r.fx)*f;r.fz+=(r.tz2-r.fz)*f;var d2=Math.atan2(Math.sin(r.th2-r.fh),Math.cos(r.th2-r.fh));r.fh+=d2*f;r.ph+=dt*Math.min(9,r.pv*2.2)}});
+ raceTick2(dt);evTick(dt);tagsTick()};
+mpLeave=function(){try{if(MP.ref){MP.ref.off();MP.ref.child(MP.uid).remove()}if(MP.R){MP.R.child("chat").off();MP.R.child("race").off();MP.R.child("ev").off();var r=ON.race;if(r&&r.host===MP.uid)MP.R.child("race").remove();else if(r&&r.pl&&r.pl[MP.uid])MP.R.child("race/pl/"+MP.uid).remove()}
+ if(ON.lob){if(!Object.keys(G.remote).length)ON.lob.remove();ON.lob=null}}catch(e){}MP.ref=null;MP.R=null;if(ON.lk){G.lock=false;ON.lk=0}ON.rs=null;ON.race=null;Object.keys(ON.tags).forEach(function(k){ON.tags[k].remove()});ON.tags={};Object.keys(G.remote).forEach(mpDrop);onHud(false)};
+
+/* --- andere Spieler zu Fuß zeichnen + Geldkoffer --- */
+if(typeof footDraw==="function"){var _fdO=footDraw;footDraw=function(dm,vis){_fdO.apply(this,arguments);if(G.mode!=="mp")return;try{
+ Object.keys(G.remote).forEach(function(k){var r=G.remote[k];if(!r.f||r.fx==null||!vis(r.fx,r.fz,1))return;var key=RIGS["r_"+k]?"r_"+k:"ped0";if(!RIGS[key])return;rigDraw(dm,key,r.fx,r.fz,r.fh,r.ph,Math.min(.85,(r.pv||0)*.17),"",false,null,0,(r.pv||0)>5?.16:0)});
+ var e=ON.cur;if(e&&!e.cl&&vis(e.p[0],e.p[1],2)){if(!ON.evMesh){var g=new Geo();g.box(0,.32,0,.42,.3,.14,0,"#c9a227",[.5,.3]);g.box(0,.68,0,.16,.05,.05,0,"#3a2a10");g.box(0,.32,.145,.08,.08,.01,0,"#e8e2c8");ON.evMesh=new Mesh(g)}
+  dm(ON.evMesh,M4.trs(e.p[0],.25+Math.sin(G.t*3)*.12,e.p[1],G.t*1.5))}}catch(x){}}}
+
+/* --- Namen über den Köpfen --- */
+function tagsTick(){var box=$("mpTags");if(!box)return;var ff=focus(),seen={};
+ Object.keys(G.remote).forEach(function(k){var r=G.remote[k],a=r.car;if(!a)return;var x=r.f?r.fx:a.x,z=r.f?r.fz:a.z,y=r.f?2.15:2.1,d=Math.hypot(x-ff.x,z-ff.z),t=ON.tags[k];
+  var p=d<150?proj(x,y,z):null;if(!t){t=ON.tags[k]=el("div","mpTag");box.appendChild(t)}seen[k]=1;
+  if(!p||p[0]<-50||p[0]>G.W+50){t.style.display="none";return}var h=(r.g?'<i style="color:'+esc(r.gc||"#ffd24a")+'">['+esc(r.g)+']</i> ':"")+esc(r.n||"?")+'<small>'+Math.round(d)+' m</small>';
+  if(t._h!==h){t.innerHTML=h;t._h=h}t.style.display="block";t.style.transform="translate("+Math.round(p[0])+"px,"+Math.round(p[1])+"px) translate(-50%,-100%) scale("+Math.max(.6,1-d/220).toFixed(2)+")"});
+ Object.keys(ON.tags).forEach(function(k){if(!seen[k]){ON.tags[k].remove();delete ON.tags[k]}})}
+
+/* --- HUD: Knöpfe + Chat-Laufband + Renn-/Event-Anzeige --- */
+(function(){try{var h=$("hud");if(!h||$("mpBar"))return;var st=document.createElement("style");st.textContent=
+ "#mpTags{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}.mpTag{position:absolute;left:0;top:0;white-space:nowrap;font:700 13px system-ui;color:#fff;text-shadow:0 1px 3px #000,0 0 2px #000;background:rgba(10,14,22,.45);padding:2px 7px;border-radius:9px}.mpTag small{font-weight:500;opacity:.75;margin-left:5px;font-size:10px}.mpTag i{font-style:normal}"+
+ "#mpBar{position:absolute;left:calc(max(10px,env(safe-area-inset-left)) + 176px);top:calc(max(10px,env(safe-area-inset-top)) + 112px);display:none;flex-direction:column;gap:8px;z-index:3}#mpBar .hb{position:relative;display:flex}"+
+ "#mpFeed{position:absolute;left:calc(max(10px,env(safe-area-inset-left)) + 232px);top:calc(max(10px,env(safe-area-inset-top)) + 112px);max-width:46vw;pointer-events:none;z-index:2;font:600 13px system-ui;color:#fff}#mpFeed div{background:rgba(10,14,22,.55);padding:4px 9px;border-radius:10px;margin-bottom:4px;transition:opacity .6s;text-shadow:0 1px 2px #000}#mpFeed b{color:#7fc4ff}"+
+ "#mpInfo{position:absolute;left:50%;transform:translateX(-50%);top:calc(max(10px,env(safe-area-inset-top)) + 58px);display:none;z-index:3;background:rgba(10,14,22,.72);color:#fff;font:700 14px system-ui;padding:7px 14px;border-radius:14px;text-align:center;max-width:86vw}#mpInfo button{margin:6px 4px 0;padding:6px 14px;border:0;border-radius:10px;font:700 13px system-ui;background:#3d8bff;color:#fff}#mpInfo button.g{background:#2fa866}#mpInfo button.r{background:#555}"+
+ ".mpList{max-height:46vh;overflow:auto;text-align:left;margin:8px 0}.mpRow{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:12px;background:rgba(127,127,127,.12);margin-bottom:6px}.mpRow .f{flex:1;min-width:0}.mpRow small{opacity:.7;display:block}.mpRow button{border:0;border-radius:10px;padding:6px 10px;font:700 13px system-ui;background:#3d8bff;color:#fff}.mpRow button:disabled{opacity:.4}";
+ document.head.appendChild(st);var tg=document.createElement("div");tg.id="mpTags";h.insertBefore(tg,h.firstChild);
+ var bar=document.createElement("div");bar.id="mpBar";[["mpBC","💬",chatDlg],["mpBP","👥",plyDlg],["mpBR","🏁",raceBtn]].forEach(function(x){var b=document.createElement("button");b.className="hb";b.id=x[0];b.textContent=x[1];b.onclick=function(){SFX.click();x[2]()};bar.appendChild(b)});h.appendChild(bar);
+ var fd=document.createElement("div");fd.id="mpFeed";h.appendChild(fd);var inf=document.createElement("div");inf.id="mpInfo";h.appendChild(inf)}catch(e){}})();
+function onHud(on){var b=$("mpBar");if(b)b.style.display=on?"flex":"none";var i=$("mpInfo");if(i&&!on)i.style.display="none";var f=$("mpFeed");if(f&&!on)f.innerHTML=""}
+function feed(n,m,g,gc){var f=$("mpFeed");if(!f)return;var d=document.createElement("div");d.innerHTML=(g?'<i style="font-style:normal;color:'+esc(gc||"#ffd24a")+'">['+esc(g)+']</i> ':"")+"<b>"+esc(n||"?")+":</b> "+esc(m);f.appendChild(d);while(f.children.length>4)f.removeChild(f.firstChild);
+ setTimeout(function(){d.style.opacity="0";setTimeout(function(){d.remove()},700)},9000)}
+function sysFeed(m){var f=$("mpFeed");if(!f)return;var d=document.createElement("div");d.style.color="#ffd24a";d.textContent=m;f.appendChild(d);while(f.children.length>4)f.removeChild(f.firstChild);setTimeout(function(){d.style.opacity="0";setTimeout(function(){d.remove()},700)},7000)}
+var INFO={k:"",h:""};function info(h,k){var i=$("mpInfo");if(!i)return;if(!h){if(INFO.h){i.style.display="none";INFO.h="";INFO.k=""}return}if(INFO.k!==k||INFO.h!==h){i.innerHTML=h;INFO.h=h;INFO.k=k}i.style.display="block"}
+
+/* --- Chat --- */
+function chatList(){var l=$("mpChatL");if(!l)return;l.innerHTML=ON.chat.length?ON.chat.map(function(v){return'<div class="mpRow"><div class="f">'+(v.g?'<b style="color:'+esc(v.gc||"#ffd24a")+'">['+esc(v.g)+']</b> ':"")+"<b>"+esc(v.n||"?")+"</b><small>"+esc(v.m)+"</small></div></div>"}).join(""):'<p class="tip">'+esc(T("Noch keine Nachrichten"))+"</p>";l.scrollTop=1e5}
+function chatDlg(){if(!MP.R)return;dlg("<h3>💬 "+esc(T("Chat"))+'</h3><div class="mpList" id="mpChatL"></div><input type="text" id="mpMsg" maxlength="80" placeholder="'+esc(T("Nachricht …"))+'">',[[T("Schließen"),"",null],[T("Senden"),"pri",chatSend]]);chatList();
+ var q=["👋","GG","🏁?","😂","🚓!","Follow me"],r=el("div","");r.style.cssText="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px";q.forEach(function(s){var b=el("button","btn",esc(s));b.style.cssText="padding:6px 10px;min-width:0;flex:0";b.onclick=function(){$("mpMsg").value=s;chatSend();$("dlg").classList.remove("on")};r.appendChild(b)});var inp=$("mpMsg");inp.parentNode.insertBefore(r,inp.nextSibling);
+ inp.addEventListener("keydown",function(e){if(e.key==="Enter"){chatSend();$("dlg").classList.remove("on")}})}
+function chatSend(){var i=$("mpMsg"),m=(i&&i.value||"").replace(/\s+/g," ").trim().slice(0,80);if(!m||!MP.R)return;if(Date.now()-ON.lastMsg<1500){toast(T("Nicht so schnell"),1000);return}ON.lastMsg=Date.now();
+ MP.R.child("chat").push({u:MP.uid,n:onName(),m:m,g:ON.gang?ON.gang.tag:"",gc:ON.gang?ON.gang.col:"",t:firebase.database.ServerValue.TIMESTAMP})}
+
+/* --- Spielerliste --- */
+function plyDlg(){var ff=focus(),ks=Object.keys(G.remote),h='<h3>👥 '+esc(T("Spieler im Raum"))+" ("+(ks.length+1)+"/"+(MP.max||MPMAX)+')</h3><p class="tip">'+esc(MP.meta&&MP.meta.n||T("Raum"))+" · "+esc(T("Code"))+": <b>"+esc(MP.meta&&MP.meta.fixed?"–":MP.room)+'</b></p><div class="mpList"><div class="mpRow"><div class="f"><b>'+esc(onName())+" ("+esc(T("Du"))+")</b></div></div>";
+ ks.forEach(function(k){var r=G.remote[k],a=r.car,x=r.f?r.fx:a.x,z=r.f?r.fz:a.z;h+='<div class="mpRow"><div class="f">'+(r.g?'<b style="color:'+esc(r.gc||"#ffd24a")+'">['+esc(r.g)+']</b> ':"")+"<b>"+esc(r.n||"?")+"</b><small>Lv "+(r.lv||1)+" · "+Math.round(Math.hypot(x-ff.x,z-ff.z))+" m · "+(r.f?"🚶":"🚗")+'</small></div><button data-k="'+esc(k)+'">📍</button></div>'});
+ dlg(h+"</div>",[[T("Schließen"),"",null]]);document.querySelectorAll("#mpChatL,.mpRow button[data-k]").forEach(function(b){if(!b.dataset.k)return;b.onclick=function(){var r=G.remote[b.dataset.k];if(!r)return;G.wp=[r.f?r.fx:r.car.x,r.f?r.fz:r.car.z];$("dlg").classList.remove("on");toast("📍 "+(r.n||""),1200)}})}
+
+/* --- Rennen: Host erstellt, Mitspieler treten bei, ab 2 Spielern Start mit 10 s Countdown --- */
+function raceBtn(){var r=ON.race,me=MP.uid;if(onFoot()){toast(T("Steig erst in dein Auto"),1600);return}
+ if(!r||r.st==="end"||onNow()-(r.t||0)>480000){dlg("<h3>🏁 "+esc(T("Rennen erstellen"))+'</h3><p class="tip">'+esc(T("Alle im Raum bekommen eine Einladung. Ab 2 Spielern kannst du starten. Ziel wird per Navi angezeigt."))+"</p>",[[T("Abbrechen"),"",null],[T("Erstellen"),"pri",raceCreate]]);return}
+ if(r.st==="wait"&&!(r.pl&&r.pl[me])){raceJoin();return}
+ if(r.st==="wait"&&r.host===me){var n=Object.keys(r.pl||{}).length;if(n<2){toast(T("Warte auf mindestens 2 Spieler"),1800);return}raceStart();return}
+ toast(T("Rennen läuft"),1200)}
+function raceCreate(){var c=G.car,best=null;for(var i=0;i<40;i++){var p=onRoadPt(onHash(MP.uid+":"+Date.now()+":"+i));if(!p)break;var d=Math.hypot(p[0]-c.x,p[1]-c.z);if(d>280&&d<650){best=p;break}if(!best||d>Math.hypot(best[0]-c.x,best[1]-c.z))best=p}if(!best)return;
+ var o={host:MP.uid,hn:onName(),st:"wait",sx:+c.x.toFixed(2),sz:+c.z.toFixed(2),sh:+c.h.toFixed(3),tx:+best[0].toFixed(1),tz:+best[1].toFixed(1),t:onNow(),pl:{}};o.pl[MP.uid]=onName();
+ MP.R.child("race").transaction(function(cur){if(cur&&cur.st!=="end"&&onNow()-(cur.t||0)<480000)return;return o}).then(function(res){if(res.committed){MP.R.child("race").onDisconnect().remove();toast("🏁 "+T("Rennen erstellt – warte auf Mitspieler"),2200)}else toast(T("Es läuft schon ein Rennen"),1600)}).catch(function(){toast(T("Server nicht erreichbar"),1600)})}
+function raceJoin(){if(onFoot()){toast(T("Steig erst in dein Auto"),1600);return}MP.R.child("race/pl/"+MP.uid).set(onName());MP.R.child("race/pl/"+MP.uid).onDisconnect().remove();SFX.click()}
+function raceLeave(){MP.R.child("race/pl/"+MP.uid).remove()}
+function raceStart(){MP.R.child("race").update({st:"cd",t0:onNow()+10000})}
+function raceUpd(v){var was=ON.race;ON.race=v;var me=MP.uid;
+ if(!v){if(ON.lk){G.lock=false;ON.lk=0}if(ON.rs){ON.rs=null;G.wp=null;$("cd").style.display="none";if(was&&was.host!==me)sysFeed("🏁 "+T("Rennen abgebrochen"))}return}
+ var id=v.host+":"+v.t;if(v.st==="wait"&&ON.seenRace!==id){ON.seenRace=id;if(v.host!==me){sysFeed("🏁 "+(v.hn||"?")+" "+T("lädt zum Rennen ein"));SFX.click()}}
+ var inR=v.pl&&v.pl[me];
+ if(v.st==="cd"&&inR&&!ON.rs){if(onFoot()){raceLeave();toast(T("Zu Fuß – Rennen verpasst"),1600);return}var ks=Object.keys(v.pl).sort(),i=ks.indexOf(me),row=Math.floor(i/2),side=i%2?1:-1,c=G.car,sh=v.sh,fx=Math.sin(sh),fz=Math.cos(sh);
+  c.x=v.sx-fx*(row*8)+fz*side*2.6;c.z=v.sz-fz*(row*8)-fx*side*2.6;c.h=sh;c.vx=c.vz=c.vf=0;c.c=Math.cos(sh);c.s=Math.sin(sh);if(window.skidReset)skidReset();G.camP=null;
+  ON.rs={t0:v.t0,go:0,last:99,id:id};G.lock=true;ON.lk=1;G.wp=[v.tx,v.tz];ON.fin=0}
+ if(v.st==="end"&&ON.rs&&ON.rs.id===id){raceResults(v);ON.rs=null;G.wp=null;if(ON.lk){G.lock=false;ON.lk=0}}
+ if(v.host===me&&v.st==="cd"){var pl=Object.keys(v.pl||{}),fin=Object.keys(v.fin||{});if(pl.length&&fin.length>=pl.length)MP.R.child("race").update({st:"end"})}}
+function raceTick2(dt){var v=ON.race,rs=ON.rs,me=MP.uid,now=onNow();
+ if(rs){var cd=$("cd");if(!rs.go){var left=(rs.t0-now)/1000,n=Math.ceil(left);if(G.car){G.car.vx=G.car.vz=0}if(n!==rs.last){rs.last=n;if(n<=3&&n>0)SFX.countdown(false)}cd.style.display="block";cd.textContent=n>0?n:"GO!";
+   if(left<=0){rs.go=1;rs.st=now;SFX.countdown(true);if(ON.lk){G.lock=false;ON.lk=0}setTimeout(function(){if(cd.textContent==="GO!")cd.style.display="none"},900)}}
+  else if(!ON.fin&&v){var d=Math.hypot(v.tx-G.car.x,v.tz-G.car.z),ms=now-rs.st;if(d<14&&!onFoot()){ON.fin=1;var pl=Object.keys(v.fin||{}).length+1;MP.R.child("race/fin/"+me).set({n:onName(),ms:ms});
+    var prize=pl===1?5000:pl===2?2500:1000;PD.money+=prize;if(PD.xp!=null)PD.xp+=pl===1?300:150;saveData();money();SFX.win();toast("🏁 "+T("Platz")+" "+pl+" · "+fmtT(ms)+" · +"+prize+" $",3200)}
+   info("🏁 "+fmtT(ms)+" · "+T("Ziel")+" "+Math.round(d)+" m"+(ON.fin?" ✅":""),"r");
+   if(v.host===me&&v.fin){var f=Object.keys(v.fin).map(function(k){return v.fin[k].ms}),first=Math.min.apply(null,f);if(now-rs.st>first+90000||now-rs.st>420000)MP.R.child("race").update({st:"end"})}else if(v.host===me&&now-rs.st>420000)MP.R.child("race").update({st:"end"})}
+  return}
+ if(v&&v.st==="wait"){var n2=Object.keys(v.pl||{}).length,inR=v.pl&&v.pl[me],h="🏁 "+esc(v.hn||"?")+" · "+n2+" "+esc(T("Spieler"))+"<br>";
+  if(v.host===me)h+=n2<2?'<small>'+esc(T("Warte auf mindestens 2 Spieler"))+'</small><br><button class="r" onclick="MP.R.child(\'race\').remove()">'+esc(T("Abbrechen"))+"</button>":'<button class="g" onclick="raceStart()">'+esc(T("Start (10 s)"))+'</button><button class="r" onclick="MP.R.child(\'race\').remove()">'+esc(T("Abbrechen"))+"</button>";
+  else h+=inR?'<small>'+esc(T("Warte auf den Start …"))+'</small><br><button class="r" onclick="raceLeave()">'+esc(T("Verlassen"))+"</button>":'<button class="g" onclick="raceJoin()">'+esc(T("Beitreten"))+'</button>';
+  info(h,"w"+n2+(inR?1:0)+(v.host===me?1:0));return}
+ if(!ON.cur||ON.cur.cl)info(null)}
+function fmtT(ms){var s=ms/1000,m=Math.floor(s/60);return m+":"+(s-m*60).toFixed(1).padStart(4,"0")}
+function raceResults(v){var f=v.fin||{},ks=Object.keys(f).sort(function(a,b){return f[a].ms-f[b].ms}),h="<h3>🏁 "+esc(T("Ergebnis"))+'</h3><div class="mpList">';
+ ks.forEach(function(k,i){h+='<div class="mpRow"><div class="f"><b>'+["🥇","🥈","🥉"][i]||(i+1)+". "+"</b></div></div>"});h='<h3>🏁 '+esc(T("Ergebnis"))+'</h3><div class="mpList">';
+ ks.forEach(function(k,i){h+='<div class="mpRow"><div class="f"><b>'+(["🥇","🥈","🥉"][i]||(i+1)+".")+" "+esc(f[k].n||"?")+(k===MP.uid?" ("+esc(T("Du"))+")":"")+"</b></div><b>"+fmtT(f[k].ms)+"</b></div>"});
+ Object.keys(v.pl||{}).forEach(function(k){if(!f[k])h+='<div class="mpRow"><div class="f">'+esc(v.pl[k])+"<small>DNF</small></div></div>"});dlg(h+"</div>",[["OK","pri",null]]);info(null)}
+
+/* --- Online-Event: alle 3 Minuten ein Geldkoffer, wer ihn zuerst holt, bekommt 2.500 $ --- */
+var EVP=180000;
+function evUpd(s){var v=s.val();if(!v)return;ON.ev[s.key]=v;if(ON.cur&&String(ON.cur.slot)===s.key&&!ON.cur.cl){ON.cur.cl=1;if(v.u!==MP.uid)sysFeed("💼 "+(v.n||"?")+" "+T("hat den Geldkoffer geholt"))}}
+function evTick(dt){var now=onNow(),slot=Math.floor(now/EVP);if(!G.world)return;
+ if(!ON.cur||ON.cur.slot!==slot){var p=onRoadPt(onHash(MP.room+"#"+slot));ON.cur={slot:slot,p:p,cl:!!ON.ev[slot]};if(p&&!ON.cur.cl)sysFeed("💼 "+T("Neuer Geldkoffer in der Stadt!"))}
+ var e=ON.cur;if(!e.p)return;var ff=focus(),d=Math.hypot(e.p[0]-ff.x,e.p[1]-ff.z);
+ if(!e.cl&&!e.busy&&d<4.5){e.busy=1;MP.R.child("ev/"+slot).transaction(function(cur){if(cur)return;return{u:MP.uid,n:onName(),t:now}}).then(function(r){e.busy=0;e.cl=1;if(r.committed){PD.money+=2500;saveData();money();SFX.win();toast("💼 +2.500 $",2200);MP.R.child("ev/"+(slot-3)).remove()}}).catch(function(){e.busy=0})}
+ if(!ON.rs&&!(ON.race&&ON.race.st==="wait")){if(!e.cl)info("💼 "+esc(T("Geldkoffer"))+" · "+Math.round(d)+' m <button onclick="G.wp=['+e.p[0].toFixed(1)+","+e.p[1].toFixed(1)+']">📍</button>',"e"+Math.round(d/10));else info(null)}}
+
+/* --- Gangs --- */
+var GCOL=["#ff4d4d","#ffb020","#2fa866","#3d8bff","#a35cff","#ff5fb0","#00c8d4","#ffffff"];
+function gangLoad(cb){if(!mpReady()||!firebase.auth().currentUser){if(cb)cb();return}var uid=firebase.auth().currentUser.uid,db=firebase.database();
+ db.ref("users/"+uid+"/gang").once("value").then(function(s){var gid=s.val();if(!gid){ON.gang=null;if(cb)cb();return}return db.ref("gangs/"+gid).once("value").then(function(g){var v=g.val();if(!v||!v.m||!v.m[uid]){ON.gang=null;db.ref("users/"+uid+"/gang").remove()}else ON.gang={id:gid,n:v.n,tag:v.tag,col:v.col,owner:v.owner,m:v.m};if(cb)cb()})}).catch(function(){if(cb)cb()})}
+function gangPage(){onAuth(function(uid){gangLoad(function(){page(T("Gangs"),function(b){var G2=ON.gang;
+ if(G2){b.appendChild(el("div","opt",'<div class="l"><b style="color:'+esc(G2.col)+'">['+esc(G2.tag)+"] "+esc(G2.n)+"</b><span>"+Object.keys(G2.m).length+" / 20 "+esc(T("Mitglieder"))+(G2.owner===uid?" · 👑 "+esc(T("Du bist Boss")):"")+"</span></div>"));
+  var l=el("div","mpList");Object.keys(G2.m).forEach(function(k){l.appendChild(el("div","mpRow",'<div class="f"><b>'+(k===G2.owner?"👑 ":"")+esc(G2.m[k])+"</b></div>"))});b.appendChild(l);
+  var lv=el("button","btn","🚪 "+esc(T("Gang verlassen")));lv.style.marginTop="10px";lv.onclick=function(){dlg("<h3>"+esc(T("Gang verlassen?"))+"</h3>"+(G2.owner===uid&&Object.keys(G2.m).length===1?'<p class="tip">'+esc(T("Du bist das letzte Mitglied – die Gang wird aufgelöst."))+"</p>":""),[[T("Abbrechen"),"",null],[T("Verlassen"),"pri",function(){gangLeave(uid,gangPage)}]])};b.appendChild(lv)}
+ else{b.appendChild(el("div","opt",'<div class="l"><b>'+esc(T("Du bist in keiner Gang"))+"</b><span>"+esc(T("Tritt einer Gang bei oder gründe deine eigene. Dein Gang-Kürzel steht dann über deinem Kopf und im Chat."))+"</span></div>"));
+  var f=el("button","btn pri","👑 "+esc(T("Gang gründen"))+" · "+m200());f.style.margin="10px 0";f.onclick=gangFound;b.appendChild(f);var l2=el("div","mpList",'<p class="tip">'+esc(T("Lade Gangs …"))+"</p>");b.appendChild(l2);
+  firebase.database().ref("gangs").orderByChild("t").limitToLast(25).once("value").then(function(s){var a=[];s.forEach(function(c){a.push([c.key,c.val()])});a.reverse();l2.innerHTML=a.length?"":'<p class="tip">'+esc(T("Noch keine Gangs – gründe die erste!"))+"</p>";
+   a.forEach(function(x){var v=x[1]||{},n=Object.keys(v.m||{}).length,r=el("div","mpRow",'<div class="f"><b style="color:'+esc(v.col||"#fff")+'">['+esc(v.tag||"")+"] "+esc(v.n||"")+"</b><small>"+n+" / 20</small></div>"),bt=el("button","",esc(T("Beitreten")));bt.disabled=n>=20;bt.onclick=function(){gangJoin(uid,x[0],v)};r.appendChild(bt);l2.appendChild(r)})}).catch(function(){l2.innerHTML='<p class="tip">'+esc(T("Server nicht erreichbar"))+"</p>"})}
+ var t=el("p","tip",ACC.user?"":T("Tipp: Melde dich im Profil mit E-Mail an, damit deine Gang auf jedem Gerät erhalten bleibt."));t.style.marginTop="12px";b.appendChild(t)},mpPage)})})}
+function gangFound(){if(PD.money<200000){toast(T("Nicht genug Geld")+" ("+m200()+")",2000);return}var cs=GCOL.map(function(c,i){return'<button class="gcb" data-c="'+c+'" style="width:34px;height:34px;border-radius:50%;border:3px solid '+(i?"transparent":"#fff")+";background:"+c+'"></button>'}).join(" ");
+ dlg("<h3>👑 "+esc(T("Gang gründen"))+'</h3><input type="text" id="gN" maxlength="20" placeholder="'+esc(T("Name der Gang"))+'"><input type="text" id="gT" maxlength="4" placeholder="'+esc(T("Kürzel (2–4)"))+'" style="text-transform:uppercase;margin-top:8px"><div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center">'+cs+"</div>",[[T("Abbrechen"),"",null],[T("Gründen")+" · "+m200(),"pri",function(){
+  var n=($("gN").value||"").replace(/[<>]/g,"").trim().slice(0,20),tg=($("gT").value||"").toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,4),col=ON.gcol||GCOL[0];if(n.length<3||tg.length<2){toast(T("Name (mind. 3) und Kürzel (2–4) eingeben"),2200);return}
+  var uid=firebase.auth().currentUser.uid,db=firebase.database(),ref=db.ref("gangs").push(),m={};m[uid]=onName();if(PD.money<200000)return;
+  ref.set({n:n,tag:tg,col:col,owner:uid,t:firebase.database.ServerValue.TIMESTAMP,m:m}).then(function(){return db.ref("users/"+uid+"/gang").set(ref.key)}).then(function(){PD.money-=200000;saveData();money();SFX.win();toast("👑 "+T("Gang gegründet")+": ["+tg+"]",2400);gangPage()}).catch(function(){toast(T("Server nicht erreichbar"),1800)})}]]);
+ ON.gcol=GCOL[0];document.querySelectorAll(".gcb").forEach(function(b){b.onclick=function(e){e.preventDefault();ON.gcol=b.dataset.c;document.querySelectorAll(".gcb").forEach(function(x){x.style.borderColor="transparent"});b.style.borderColor="#fff"}})}
+function gangJoin(uid,gid,v){if(Object.keys(v.m||{}).length>=20){toast(T("Gang ist voll"),1500);return}var db=firebase.database();db.ref("gangs/"+gid+"/m/"+uid).set(onName()).then(function(){return db.ref("users/"+uid+"/gang").set(gid)}).then(function(){SFX.win();toast("✅ ["+(v.tag||"")+"]",1600);gangPage()}).catch(function(){toast(T("Server nicht erreichbar"),1800)})}
+function gangLeave(uid,cb){var g=ON.gang,db=firebase.database();if(!g){if(cb)cb();return}var others=Object.keys(g.m).filter(function(k){return k!==uid}),p;
+ if(g.owner===uid&&!others.length)p=db.ref("gangs/"+g.id).remove();else if(g.owner===uid)p=db.ref("gangs/"+g.id).update({owner:others[0]}).then(function(){return db.ref("gangs/"+g.id+"/m/"+uid).remove()});else p=db.ref("gangs/"+g.id+"/m/"+uid).remove();
+ p.then(function(){return db.ref("users/"+uid+"/gang").remove()}).then(function(){ON.gang=null;toast(T("Gang verlassen"),1400);if(cb)cb()}).catch(function(){toast(T("Server nicht erreichbar"),1800)})}
+
+/* --- Mehrspieler-Seite: feste Lobbys pro Sprache, öffentliche Lobbys, eigener Raum --- */
+var MPL=null;
+mpPage=function(){page(T("Mehrspieler"),function(b){var on=mpReady(),lang=MPL||(["en","de","ru"].indexOf(SET.lang)>=0?SET.lang:"en");
+ var hd=el("div","mpRow",'<div class="f"><b>'+(on?"🟢 "+esc(T("Online-Server verbunden")):"🟠 "+esc(T("Verbinde mit dem Server …")))+"</b><small>"+esc(T("Dein Name"))+": <b>"+esc(onName())+'</b></small></div><button id="mpNmE">✏️ '+esc(T("ändern"))+"</button>");b.appendChild(hd);
+ var tb=el("div","");tb.style.cssText="display:flex;gap:6px;margin:12px 0 6px;align-items:center;flex-wrap:wrap";tb.appendChild(el("b","",esc(T("Feste Server"))+" "));
+ ["en","de","ru"].forEach(function(L){var x=el("button","btn"+(L===lang?" pri":""),FL[L]+" "+L.toUpperCase());x.style.cssText="flex:0 0 auto;width:auto;min-width:0;height:auto;padding:7px 12px;display:inline-flex;flex-direction:row;gap:5px;align-items:center;font-size:14px";x.onclick=function(){MPL=L;mpPage()};tb.appendChild(x)});b.appendChild(tb);
+ var g=grid(b),cnt={};MAPS.forEach(function(m){var id="M"+m.id+"_"+lang,c=card(m.icon,T(m.n)+" "+FL[lang],"… / "+MPMAX+" "+T("Spieler"),{lock:!on,f:function(){if(on)mpJoin(id)}});cnt[id]=c.querySelector(".ds");g.appendChild(c)});
+ var h2=el("h3","",esc(T("Öffentliche Räume")));h2.style.margin="14px 0 6px";b.appendChild(h2);var pl=el("div","mpList",'<p class="tip">'+esc(on?T("Lade Räume …"):T("Server nicht erreichbar"))+"</p>");pl.style.maxHeight="none";b.appendChild(pl);
+ var g2=grid(b);g2.appendChild(card("➕",T("Eigenen Raum erstellen"),T("Map, Spielerzahl, öffentlich/privat, Passwort"),{big:1,lock:!on,f:function(){if(on)roomCreateDlg()}}));
+ g2.appendChild(card("🔑",T("Raum beitreten"),T("Code von einem Freund eingeben"),{big:1,lock:!on,f:function(){if(!on)return;dlg("<h3>"+esc(T("Raumcode"))+"</h3><input type='text' id='rc' maxlength='4' placeholder='K7QX' style='text-align:center;font-size:24px;text-transform:uppercase'>",[[T("Abbrechen"),"",null],[T("Beitreten"),"pri",function(){var v=($("rc").value||"").toUpperCase().replace(/[^A-Z0-9]/g,"");if(v.length===4)mpJoin(v)}]])}}));
+ g2.appendChild(card("👑",T("Gangs"),ON.gang?"["+ON.gang.tag+"] "+ON.gang.n:T("Beitreten oder gründen (200.000 $)"),{big:1,lock:!on,f:function(){if(on)gangPage()}}));
+ var t=el("p","tip",T("Im Online-Modus: 💬 Chat, 👥 Spielerliste, 🏁 Rennen ab 2 Spielern, 💼 Geldkoffer alle 3 Minuten."));t.style.marginTop="12px";b.appendChild(t);
+ $("mpNmE").onclick=function(e){e.preventDefault();dlg("<h3>"+esc(T("Dein Name"))+'</h3><input type="text" id="nmI" maxlength="16" value="'+esc(onName())+'">',[[T("Abbrechen"),"",null],["OK","pri",function(){var v=($("nmI").value||"").replace(/[<>]/g,"").trim().slice(0,16);if(v.length>=2){PD.prof.name=v;saveData();mpPage()}}]])};
+ if(!on){setTimeout(function(){if(UI.scr==="pg"&&mpReady()&&$("mpNmE"))mpPage()},2500);return}
+ onAuth(function(){var db=firebase.database();Object.keys(cnt).forEach(function(id){db.ref("rooms/"+id+"/p").once("value").then(function(s){if(cnt[id])cnt[id].textContent=s.numChildren()+" / "+MPMAX+" "+T("Spieler")})});
+  db.ref("lobbies").orderByChild("t").limitToLast(40).once("value").then(function(s){var a=[];s.forEach(function(c){a.push([c.key,c.val()])});a.reverse();pl.innerHTML="";var shown=0;
+   a.forEach(function(x){var v=x[1]||{};db.ref("rooms/"+x[0]+"/p").once("value").then(function(ps){var n=ps.numChildren();if(!n){if(v.t&&Date.now()-v.t>900000)db.ref("lobbies/"+x[0]).remove();return}shown++;var mp=mapOf(v.map),mx=v.max||MPMAX;
+    var r=el("div","mpRow",'<div class="f"><b>'+(v.pw?"🔒 ":"")+(FL[v.l]||"🌍")+" "+esc(v.n||x[0])+"</b><small>"+mp.icon+" "+esc(T(mp.n))+" · "+esc(v.hn||"")+" · "+n+" / "+mx+"</small></div>"),bt=el("button","",esc(T("Beitreten")));bt.disabled=n>=mx;bt.onclick=function(){mpJoin(x[0])};r.appendChild(bt);pl.appendChild(r)})});
+   setTimeout(function(){if(!shown&&pl.isConnected)pl.innerHTML='<p class="tip">'+esc(T("Gerade keine öffentlichen Räume – erstelle einen!"))+"</p>"},1800)}).catch(function(){pl.innerHTML='<p class="tip">'+esc(T("Server nicht erreichbar"))+"</p>"})})},playPage)};
+function roomCreateDlg(){var ms=MAPS.map(function(m){return'<option value="'+m.id+'">'+m.icon+" "+esc(T(m.n))+"</option>"}).join(""),mx=[2,4,8,12,16,20,25].map(function(n){return'<option'+(n===16?" selected":"")+">"+n+"</option>"}).join("");
+ var S='style="width:100%;padding:10px;border-radius:12px;font-size:16px;margin-top:6px"';
+ dlg("<h3>➕ "+esc(T("Eigener Raum"))+'</h3><input type="text" id="crN" maxlength="24" value="'+esc(onName())+'s Room"><label class="tip" style="display:block;margin-top:8px">'+esc(T("Map"))+'</label><select id="crM" '+S+">"+ms+'</select><label class="tip" style="display:block;margin-top:8px">'+esc(T("Max. Spieler"))+'</label><select id="crX" '+S+">"+mx+'</select><label class="tip" style="display:block;margin-top:8px">'+esc(T("Sichtbarkeit"))+'</label><select id="crV" '+S+'><option value="1">🌍 '+esc(T("Öffentlich – in der Liste"))+'</option><option value="0">🔒 '+esc(T("Privat – nur mit Code"))+'</option></select><input type="password" id="crP" maxlength="20" placeholder="'+esc(T("Passwort (optional)"))+'" style="margin-top:8px">',
+  [[T("Abbrechen"),"",null],[T("Erstellen"),"pri",function(){var n=($("crN").value||"").replace(/[<>]/g,"").trim().slice(0,24)||onName(),m=$("crM").value,x=+$("crX").value||16,pub=$("crV").value==="1",pw=($("crP").value||"").trim();mpJoin(mpCode(),{create:1,n:n,map:m,max:x,pub:pub,pw:pw})}]])}
+if(window.addEventListener)window.addEventListener("load",function(){setTimeout(function(){var t=setInterval(function(){if(mpReady()&&firebase.auth().currentUser){clearInterval(t);gangLoad()}},3000);setTimeout(function(){clearInterval(t)},60000)},2500)});
+
+/* --- Übersetzungen --- */
+(function(){try{[["Server nicht erreichbar","Server unreachable","Сервер недоступен"],["Bitte zuerst im Profil anmelden","Please sign in in your profile first","Сначала войдите в профиле"],["Lobby ist voll","Lobby is full","Лобби заполнено"],["Raum","Room","Комната"],
+["Chat","Chat","Чат"],["Nachricht …","Message …","Сообщение …"],["Schließen","Close","Закрыть"],["Senden","Send","Отправить"],["Noch keine Nachrichten","No messages yet","Сообщений пока нет"],["Nicht so schnell","Not so fast","Не так быстро"],
+["Spieler im Raum","Players in room","Игроки в комнате"],["Du","You","Ты"],["Spieler","players","игроков"],["Steig erst in dein Auto","Get in your car first","Сначала сядь в машину"],["Rennen erstellen","Create race","Создать гонку"],
+["Alle im Raum bekommen eine Einladung. Ab 2 Spielern kannst du starten. Ziel wird per Navi angezeigt.","Everyone in the room gets an invite. You can start with 2+ players. The finish is shown by the navigation.","Все в комнате получат приглашение. Старт от 2 игроков. Финиш покажет навигатор."],
+["Erstellen","Create","Создать"],["Abbrechen","Cancel","Отмена"],["Warte auf mindestens 2 Spieler","Waiting for at least 2 players","Ждём минимум 2 игроков"],["Rennen läuft","Race in progress","Гонка идёт"],["Rennen erstellt – warte auf Mitspieler","Race created – waiting for players","Гонка создана – ждём игроков"],
+["Es läuft schon ein Rennen","A race is already running","Гонка уже идёт"],["Rennen abgebrochen","Race cancelled","Гонка отменена"],["lädt zum Rennen ein","invites you to a race","приглашает на гонку"],["Zu Fuß – Rennen verpasst","On foot – race missed","Пешком – гонка пропущена"],
+["Platz","Place","Место"],["Ziel","Finish","Финиш"],["Start (10 s)","Start (10 s)","Старт (10 с)"],["Warte auf den Start …","Waiting for the start …","Ждём старта …"],["Verlassen","Leave","Покинуть"],["Beitreten","Join","Войти"],["Ergebnis","Result","Результат"],
+["hat den Geldkoffer geholt","grabbed the cash case","забрал кейс с деньгами"],["Neuer Geldkoffer in der Stadt!","New cash case in the city!","Новый кейс с деньгами в городе!"],["Geldkoffer","Cash case","Кейс с деньгами"],
+["Gangs","Gangs","Банды"],["Mitglieder","members","участников"],["Du bist Boss","You are the boss","Ты босс"],["Gang verlassen","Leave gang","Покинуть банду"],["Gang verlassen?","Leave gang?","Покинуть банду?"],["Du bist das letzte Mitglied – die Gang wird aufgelöst.","You are the last member – the gang will be disbanded.","Ты последний участник – банда будет распущена."],
+["Du bist in keiner Gang","You are not in a gang","Ты не в банде"],["Tritt einer Gang bei oder gründe deine eigene. Dein Gang-Kürzel steht dann über deinem Kopf und im Chat.","Join a gang or found your own. Your gang tag then shows above your head and in chat.","Вступи в банду или основай свою. Тег банды будет над головой и в чате."],
+["Gang gründen","Found gang","Основать банду"],["Gründen","Found","Основать"],["Lade Gangs …","Loading gangs …","Загрузка банд …"],["Noch keine Gangs – gründe die erste!","No gangs yet – found the first one!","Банд пока нет – основай первую!"],["Tipp: Melde dich im Profil mit E-Mail an, damit deine Gang auf jedem Gerät erhalten bleibt.","Tip: sign in with e-mail in your profile so your gang stays on every device.","Совет: войди по e-mail в профиле, чтобы банда сохранилась на всех устройствах."],
+["Nicht genug Geld","Not enough money","Недостаточно денег"],["Name der Gang","Gang name","Название банды"],["Kürzel (2–4)","Tag (2–4)","Тег (2–4)"],["Name (mind. 3) und Kürzel (2–4) eingeben","Enter name (min. 3) and tag (2–4)","Введи название (мин. 3) и тег (2–4)"],["Gang gegründet","Gang founded","Банда основана"],["Gang ist voll","Gang is full","Банда заполнена"],
+["Mehrspieler","Multiplayer","Мультиплеер"],["Online-Server verbunden","Online server connected","Онлайн-сервер подключён"],["Verbinde mit dem Server …","Connecting to server …","Подключение к серверу …"],["Dein Name","Your name","Твоё имя"],["Feste Lobbys","Official lobbies","Официальные лобби"],["Öffentliche Lobbys","Public lobbies","Публичные лобби"],
+["Lade Lobbys …","Loading lobbies …","Загрузка лобби …"],["Öffentliche Lobby erstellen","Create public lobby","Создать публичное лобби"],["Jeder kann sie in der Liste sehen und beitreten","Everyone can see and join it in the list","Все увидят его в списке и смогут войти"],["Öffentliche Lobby","Public lobby","Публичное лобби"],["Name der Lobby","Lobby name","Название лобби"],
+["Privater Raum","Private room","Приватная комната"],["Bekomme einen 4-stelligen Code für deine Freunde","Get a 4-character code for your friends","Получи 4-значный код для друзей"],["Raum beitreten","Join room","Войти в комнату"],["Code von einem Freund eingeben","Enter a friend's code","Введи код друга"],["Raumcode","Room code","Код комнаты"],
+["Beitreten oder gründen (200.000 $)","Join or found one ($200,000)","Вступить или основать (200 000 $)"],["Im Online-Modus: 💬 Chat, 👥 Spielerliste, 🏁 Rennen ab 2 Spielern, 💼 Geldkoffer alle 3 Minuten.","Online: 💬 chat, 👥 player list, 🏁 races with 2+ players, 💼 cash case every 3 minutes.","Онлайн: 💬 чат, 👥 список игроков, 🏁 гонки от 2 игроков, 💼 кейс с деньгами каждые 3 минуты."],
+["Gerade keine öffentlichen Räume – erstelle einen!","No public rooms right now – create one!","Сейчас нет публичных комнат – создай свою!"],["ändern","change","изменить"],["Feste Server","Official servers","Официальные серверы"],["Öffentliche Räume","Public rooms","Публичные комнаты"],["Lade Räume …","Loading rooms …","Загрузка комнат …"],["Eigenen Raum erstellen","Create your own room","Создать свою комнату"],["Map, Spielerzahl, öffentlich/privat, Passwort","Map, player limit, public/private, password","Карта, лимит игроков, публичная/приватная, пароль"],["Eigener Raum","Own room","Своя комната"],["Map","Map","Карта"],["Max. Spieler","Max. players","Макс. игроков"],["Sichtbarkeit","Visibility","Видимость"],["Öffentlich – in der Liste","Public – shown in the list","Публичная – видна в списке"],["Privat – nur mit Code","Private – code only","Приватная – только по коду"],["Passwort (optional)","Password (optional)","Пароль (необязательно)"],["Passwort","Password","Пароль"],["Falsches Passwort","Wrong password","Неверный пароль"],["Raum nicht gefunden","Room not found","Комната не найдена"],["Code","Code","Код"],["Verbinde …","Connecting …","Подключение …"]
+].forEach(function(r){EN[r[0]]=EN[r[0]]||r[1];RU[r[0]]=RU[r[0]]||r[2]})}catch(e){}})();
+
+/* ===== Freunde: Freundescode, Anfragen, Online-Status, Einladen, Nachjoinen, private Chats, Blockieren, Melden ===== */
+var SOC={uid:null,fr:{},req:{},blk:{},fc:null,unread:{},pub:{},dmRef:null,dmWith:null};
+function pairId(a,b){return a<b?a+"_"+b:b+"_"+a}
+function socDb(){return firebase.database()}
+function socOff(){try{if(SOC.uid){var db=socDb();db.ref("friends/"+SOC.uid).off();db.ref("users/"+SOC.uid+"/blk").off();db.ref("inbox/"+SOC.uid).off()}}catch(e){}SOC.uid=null;SOC.fr={};SOC.req={};SOC.blk={};SOC.fc=null;SOC.unread={}}
+function socInit(u){if(!u){socOff();return}if(SOC.uid===u.uid)return;socOff();SOC.uid=u.uid;var db=socDb(),me=u.uid;
+ db.ref("friends/"+me).on("value",function(s){SOC.fr=s.val()||{};socRefresh()});
+ db.ref("users/"+me+"/blk").on("value",function(s){SOC.blk=s.val()||{};socRefresh()});
+ var ib=db.ref("inbox/"+me);ib.on("child_added",socInbox);ib.on("child_changed",socInbox);ib.on("child_removed",function(s){if(SOC.req[s.key]||SOC.unread[s.key]){delete SOC.req[s.key];delete SOC.unread[s.key];socRefresh()}});
+ var pr=db.ref("public/"+me);pr.update({n:onName(),ol:1,t:firebase.database.ServerValue.TIMESTAMP});pr.onDisconnect().update({ol:0,on:""});
+ pr.child("fc").once("value").then(function(s){if(s.val())SOC.fc=s.val();else socMakeCode(0)})}
+function socMakeCode(n){if(n>6||!SOC.uid)return;var a="ABCDEFGHJKLMNPQRSTUVWXYZ23456789",c="";for(var i=0;i<6;i++)c+=a[Math.floor(Math.random()*a.length)];var me=SOC.uid;
+ socDb().ref("codes/"+c).transaction(function(cur){if(cur)return;return me}).then(function(r){if(r.committed&&r.snapshot.val()===me){SOC.fc=c;socDb().ref("public/"+me).update({fc:c});socRefresh()}else socMakeCode(n+1)}).catch(function(){})}
+function socInbox(s){var from=s.key,v=s.val(),me=SOC.uid,db=socDb();if(!v||!me)return;var box=db.ref("inbox/"+me+"/"+from);
+ if(SOC.blk[from]){box.remove();return}
+ if(v.k==="fr"){if(SOC.fr[from]&&!SOC.fr[from].p){box.remove();return}if(SOC.fr[from]&&SOC.fr[from].p){socAccept(from,v.n);return}SOC.req[from]=v;if(Date.now()-(v.t||0)<120000){socNote("👫 "+T("Freundschaftsanfrage von")+" "+(v.n||"?"))}}
+ else if(v.k==="ok"){db.ref("friends/"+me+"/"+from).set({n:v.n||"?",t:firebase.database.ServerValue.TIMESTAMP});box.remove();socNote("✅ "+(v.n||"?")+" "+T("ist jetzt dein Freund"))}
+ else if(v.k==="rm"){db.ref("friends/"+me+"/"+from).remove();box.remove()}
+ else if(v.k==="inv"){box.remove();if(!SOC.fr[from]||Date.now()-(v.t||0)>300000)return;if(MP.room===v.r&&G.mode==="mp")return;SFX.click();
+  dlg("<h3>📨 "+esc(T("Einladung"))+'</h3><p class="tip"><b>'+esc(v.n||"?")+"</b> "+esc(T("lädt dich ein in"))+" <b>"+esc(v.rn||v.r)+"</b></p>",[[T("Ablehnen"),"",null],[T("Beitreten"),"pri",function(){socGoRoom(v.r)}]])}
+ else if(v.k==="dm"){if(SOC.dmWith===from){box.remove();return}SOC.unread[from]=v;if(Date.now()-(v.t||0)<60000)socNote("💬 "+(v.n||"?")+": "+(v.m||""))}
+ socRefresh()}
+function socNote(m){if(G.view==="game"&&window.sysFeed&&G.mode==="mp")sysFeed(m);else toast(m,2600)}
+function socRefresh(){var n=Object.keys(SOC.req).length+Object.keys(SOC.unread).length,b=$("socBadge");if(b){b.textContent=n;b.style.display=n?"":"none"}if(UI.scr==="pg"&&$("socPg")&&!$("dlg").classList.contains("on"))friendsPage(true)}
+function socGoRoom(r){if(G.mode==="mp"&&G.view==="game"){mpLeave();toMenu()}setTimeout(function(){mpJoin(r)},300)}
+function socFriendName(k){var f=SOC.fr[k];return f&&f.n||(SOC.pub[k]&&SOC.pub[k].n)||"?"}
+/* Anfrage senden (per Code oder direkt aus der Spielerliste) */
+function socRequest(to,name){var me=SOC.uid;if(!me||to===me){toast(T("Das bist du selbst"),1500);return}if(SOC.fr[to]&&!SOC.fr[to].p){toast(T("Ihr seid schon Freunde"),1500);return}if(SOC.blk[to]){toast(T("Spieler ist blockiert"),1500);return}
+ var db=socDb();if(SOC.req[to]){socAccept(to,SOC.req[to].n);return}
+ db.ref("inbox/"+to+"/"+me).set({k:"fr",n:onName(),t:firebase.database.ServerValue.TIMESTAMP}).then(function(){db.ref("friends/"+me+"/"+to).set({n:name||"?",p:1,t:firebase.database.ServerValue.TIMESTAMP});toast("📨 "+T("Anfrage gesendet"),1600)}).catch(function(){toast(T("Anfrage nicht möglich"),1800)})}
+function socAddCode(code){code=(code||"").toUpperCase().replace(/[^A-Z0-9]/g,"");if(code.length!==6){toast(T("Code hat 6 Zeichen"),1600);return}
+ socDb().ref("codes/"+code).once("value").then(function(s){var uid=s.val();if(!uid){toast(T("Code nicht gefunden"),1800);return}socDb().ref("public/"+uid+"/n").once("value").then(function(n){socRequest(uid,n.val()||"?")})}).catch(function(){toast(T("Server nicht erreichbar"),1600)})}
+function socAccept(from,name){var me=SOC.uid,db=socDb();db.ref("friends/"+me+"/"+from).set({n:name||"?",t:firebase.database.ServerValue.TIMESTAMP});db.ref("inbox/"+from+"/"+me).set({k:"ok",n:onName(),t:firebase.database.ServerValue.TIMESTAMP});db.ref("inbox/"+me+"/"+from).remove();delete SOC.req[from];SFX.win();socRefresh()}
+function socDecline(from){var me=SOC.uid;socDb().ref("inbox/"+me+"/"+from).remove();delete SOC.req[from];socRefresh()}
+function socRemove(k){var me=SOC.uid,db=socDb();db.ref("friends/"+me+"/"+k).remove();db.ref("inbox/"+k+"/"+me).set({k:"rm",n:onName(),t:firebase.database.ServerValue.TIMESTAMP}).catch(function(){})}
+function socBlock(k,name){var me=SOC.uid,db=socDb();dlg("<h3>🚫 "+esc(T("Blockieren"))+"?</h3><p class='tip'>"+esc(name||"?")+" – "+esc(T("kann dir keine Anfragen, Einladungen oder Nachrichten mehr schicken, und du siehst seine Chat-Nachrichten nicht mehr."))+"</p>",[[T("Abbrechen"),"",null],[T("Blockieren"),"pri",function(){
+ db.ref("users/"+me+"/blk/"+k).set({n:name||"?",t:firebase.database.ServerValue.TIMESTAMP});if(SOC.fr[k])socRemove(k);db.ref("inbox/"+me+"/"+k).remove();toast("🚫 "+T("Blockiert"),1400)}]])}
+function socUnblock(k){socDb().ref("users/"+SOC.uid+"/blk/"+k).remove()}
+var REASONS=["Beleidigung","Cheaten / Hacken","Spam","Unangemessener Name","Belästigung","Sonstiges"];
+function socReport(k,name){var o=REASONS.map(function(r,i){return'<option value="'+i+'">'+esc(T(r))+"</option>"}).join("");
+ dlg("<h3>⚠️ "+esc(T("Spieler melden"))+'</h3><p class="tip"><b>'+esc(name||"?")+'</b></p><select id="rpR" style="width:100%;padding:10px;border-radius:12px;font-size:16px">'+o+'</select><input type="text" id="rpT" maxlength="200" placeholder="'+esc(T("Was ist passiert? (optional)"))+'" style="margin-top:8px">',[[T("Abbrechen"),"",null],[T("Melden"),"pri",function(){
+  var why=REASONS[+$("rpR").value||0],chat=(ON.chat||[]).filter(function(c){return c.u===k}).slice(-10).map(function(c){return c.m});
+  socDb().ref("reports").push({by:SOC.uid,byn:onName(),who:k,wn:name||"?",why:why,txt:($("rpT").value||"").slice(0,200),room:MP.room||"",chat:chat,t:firebase.database.ServerValue.TIMESTAMP}).then(function(){toast("✅ "+T("Danke, Meldung gesendet"),2000)}).catch(function(){toast(T("Server nicht erreichbar"),1600)})}]])}
+function socPlayerMenu(k,name){var fr=SOC.fr[k],btn=[];
+ var h="<h3>"+esc(name||"?")+"</h3>";dlg(h+'<div class="mpList" id="spm"></div>',[[T("Schließen"),"",null]]);var l=$("spm");
+ function row(t,f){var b=el("button","btn",esc(t));b.style.cssText="width:100%;margin-bottom:6px";b.onclick=function(){$("dlg").classList.remove("on");f()};l.appendChild(b)}
+ if(!fr)row("👫 "+T("Als Freund hinzufügen"),function(){socRequest(k,name)});else{row("💬 "+T("Nachricht schreiben"),function(){dmDlg(k)});row("➖ "+T("Freund entfernen"),function(){socRemove(k)})}
+ if(SOC.blk[k])row("✅ "+T("Blockierung aufheben"),function(){socUnblock(k)});else row("🚫 "+T("Blockieren"),function(){socBlock(k,name)});row("⚠️ "+T("Melden"),function(){socReport(k,name)})}
+/* private Chats */
+function dmDlg(k){var me=SOC.uid,name=socFriendName(k);if(!me)return;var pid=pairId(me,k),db=socDb();if(SOC.dmRef)SOC.dmRef.off();SOC.dmWith=k;delete SOC.unread[k];db.ref("inbox/"+me+"/"+k).once("value").then(function(s){var v=s.val();if(v&&v.k==="dm")s.ref.remove()});socRefresh();
+ dlg("<h3>💬 "+esc(name)+'</h3><div class="mpList" id="dmL"><p class="tip">…</p></div><input type="text" id="dmI" maxlength="200" placeholder="'+esc(T("Nachricht …"))+'">',[[T("Schließen"),"",function(){dmClose()}],[T("Senden"),"pri",function(){dmSend(k);setTimeout(function(){dmDlg(k)},50)}]]);
+ var L=$("dmL"),first=1;SOC.dmRef=db.ref("dm/"+pid).limitToLast(40);SOC.dmRef.on("child_added",function(s){var v=s.val();if(!v||!$("dmL"))return;if(first){L.innerHTML="";first=0}var mine=v.u===me,d=el("div","mpRow",'<div class="f" style="text-align:'+(mine?"right":"left")+'"><small>'+esc(mine?T("Du"):name)+"</small>"+esc(v.m)+"</div>");if(mine)d.style.background="rgba(61,139,255,.22)";L.appendChild(d);L.scrollTop=1e5});
+ setTimeout(function(){if(first&&$("dmL")){$("dmL").innerHTML='<p class="tip">'+esc(T("Noch keine Nachrichten"))+"</p>";first=0}},1500);
+ $("dmI").addEventListener("keydown",function(e){if(e.key==="Enter"){dmSend(k);$("dmI").value=""}})}
+function dmClose(){if(SOC.dmRef)SOC.dmRef.off();SOC.dmRef=null;SOC.dmWith=null}
+function dmSend(k){var i=$("dmI"),m=(i&&i.value||"").replace(/\s+/g," ").trim().slice(0,200),me=SOC.uid;if(!m||!me)return;if(Date.now()-(ON.lastMsg||0)<1200){toast(T("Nicht so schnell"),1000);return}ON.lastMsg=Date.now();var db=socDb();
+ db.ref("dm/"+pairId(me,k)).push({u:me,m:m,t:firebase.database.ServerValue.TIMESTAMP}).catch(function(){toast(T("Server nicht erreichbar"),1500)});db.ref("inbox/"+k+"/"+me).set({k:"dm",n:onName(),m:m.slice(0,60),t:firebase.database.ServerValue.TIMESTAMP}).catch(function(){})}
+function socInvite(k){if(G.mode!=="mp"||!MP.room){toast(T("Erst einem Raum beitreten"),1600);return}socDb().ref("inbox/"+k+"/"+SOC.uid).set({k:"inv",n:onName(),r:MP.room,rn:MP.meta&&MP.meta.n||MP.room,t:firebase.database.ServerValue.TIMESTAMP}).then(function(){toast("📨 "+T("Einladung gesendet"),1500)}).catch(function(){toast(T("Einladung nicht möglich"),1600)})}
+/* Freunde-Seite */
+function friendsPage(re){onAuth(function(){var back=G.view==="game"?null:mpPage;var y=re&&$("pgB")?$("pgB").scrollTop:0;
+ if(G.view==="game"){friendsDlg();return}
+ page(T("Freunde"),function(b){var w=el("div","");w.id="socPg";b.appendChild(w);
+  var hd=el("div","mpRow",'<div class="f"><small>'+esc(T("Dein Freundescode"))+'</small><b style="font-size:22px;letter-spacing:3px">'+esc(SOC.fc||"……")+'</b></div><button id="fcCp">📋 '+esc(T("Kopieren"))+'</button><button id="fcAdd">➕ '+esc(T("Hinzufügen"))+"</button>");w.appendChild(hd);
+  $("fcCp").onclick=function(){try{navigator.clipboard.writeText(SOC.fc||"");toast("📋 "+T("Kopiert"),1000)}catch(e){toast(SOC.fc||"",2000)}};
+  $("fcAdd").onclick=function(){dlg("<h3>➕ "+esc(T("Freund hinzufügen"))+"</h3><input type='text' id='fcI' maxlength='6' placeholder='ABC123' style='text-align:center;font-size:24px;text-transform:uppercase;letter-spacing:3px'>",[[T("Abbrechen"),"",null],[T("Anfrage senden"),"pri",function(){socAddCode($("fcI").value)}]])};
+  var rq=Object.keys(SOC.req);if(rq.length){w.appendChild(el("h3","",esc(T("Anfragen"))+" ("+rq.length+")"));rq.forEach(function(k){var v=SOC.req[k],r=el("div","mpRow",'<div class="f"><b>'+esc(v.n||"?")+"</b><small>"+esc(T("möchte dein Freund sein"))+"</small></div>"),a=el("button","","✅"),d=el("button","","✖");d.style.background="#555";a.onclick=function(){socAccept(k,v.n)};d.onclick=function(){socDecline(k)};r.appendChild(a);r.appendChild(d);w.appendChild(r)})}
+  var ks=Object.keys(SOC.fr);w.appendChild(el("h3","",esc(T("Freunde"))+" ("+ks.filter(function(k){return !SOC.fr[k].p}).length+")"));if(!ks.length)w.appendChild(el("p","tip",esc(T("Noch keine Freunde – teile deinen Code oder füge jemanden aus der Spielerliste hinzu."))));
+  ks.forEach(function(k){var f=SOC.fr[k],r=el("div","mpRow",'<div class="f"><b>'+(SOC.unread[k]?"🔵 ":"")+esc(f.n||"?")+'</b><small class="st">'+(f.p?"⏳ "+esc(T("Anfrage gesendet")):"…")+"</small></div>");w.appendChild(r);if(f.p)return;
+   var cb=el("button","","💬");cb.onclick=function(){dmDlg(k)};r.appendChild(cb);var mb=el("button","","⋯");mb.style.background="#555";mb.onclick=function(){socPlayerMenu(k,f.n)};r.appendChild(mb);
+   socDb().ref("public/"+k).once("value").then(function(s){var p=s.val()||{};SOC.pub[k]=p;var st=r.querySelector(".st");if(!st)return;if(p.n&&p.n!==f.n)socDb().ref("friends/"+SOC.uid+"/"+k+"/n").set(p.n);
+    st.textContent=p.on?"🟢 "+T("Spielt in")+" "+(p.rn||p.on):p.ol?"🟢 "+T("Online"):"⚫ "+T("Offline");if(p.on){var jb=el("button","",esc(T("Beitreten")));jb.onclick=function(){socGoRoom(p.on)};r.insertBefore(jb,cb)}}).catch(function(){})});
+  var bl=Object.keys(SOC.blk);if(bl.length){w.appendChild(el("h3","",esc(T("Blockiert"))));bl.forEach(function(k){var r=el("div","mpRow",'<div class="f">'+esc(SOC.blk[k].n||"?")+"</div>"),u=el("button","",esc(T("Aufheben")));u.onclick=function(){socUnblock(k)};r.appendChild(u);w.appendChild(r)})}
+  if(!ACC.user){var t=el("p","tip",T("Tipp: Melde dich im Profil mit E-Mail an, damit Freunde und Code auf jedem Gerät erhalten bleiben."));t.style.marginTop="12px";w.appendChild(t)}
+  if(!SOC.fc)setTimeout(function(){if($("socPg")&&SOC.fc)friendsPage(true)},2500)},back);if(y)$("pgB").scrollTop=y})}
+/* im Spiel: kompakte Freundesliste zum Einladen */
+function friendsDlg(){var ks=Object.keys(SOC.fr).filter(function(k){return !SOC.fr[k].p});dlg("<h3>👫 "+esc(T("Freunde einladen"))+'</h3><div class="mpList" id="fdl">'+(ks.length?"":'<p class="tip">'+esc(T("Noch keine Freunde – teile deinen Code oder füge jemanden aus der Spielerliste hinzu."))+"</p>")+'</div><p class="tip">'+esc(T("Dein Freundescode"))+": <b>"+esc(SOC.fc||"…")+"</b></p>",[[T("Schließen"),"",null]]);var l=$("fdl");
+ ks.forEach(function(k){var f=SOC.fr[k],r=el("div","mpRow",'<div class="f"><b>'+(SOC.unread[k]?"🔵 ":"")+esc(f.n||"?")+'</b><small class="st">…</small></div>'),ib=el("button","","📨"),cb=el("button","","💬");ib.onclick=function(){socInvite(k)};cb.onclick=function(){dmDlg(k)};r.appendChild(ib);r.appendChild(cb);l.appendChild(r);
+  socDb().ref("public/"+k).once("value").then(function(s){var p=s.val()||{},st=r.querySelector(".st");if(st)st.textContent=p.on===MP.room?"✅ "+T("Im selben Raum"):p.on?"🟢 "+(p.rn||p.on):p.ol?"🟢 "+T("Online"):"⚫ "+T("Offline")})})}
+/* Anbindung: Anmeldung, Präsenz im Raum, Chat-Filter, Spielerliste, Mehrspieler-Seite, HUD-Knopf */
+(function(){var t=setInterval(function(){if(window.firebase&&firebase.apps&&firebase.apps.length&&firebase.auth){clearInterval(t);firebase.auth().onAuthStateChanged(function(u){try{socInit(u)}catch(e){}})}},1000);setTimeout(function(){clearInterval(t)},120000)})();
+var _onStartS=onStart;onStart=function(meta){_onStartS(meta);try{socDb().ref("public/"+MP.uid).update({on:MP.room,rn:meta&&meta.n||MP.room,ol:1});if(!SOC.uid&&firebase.auth().currentUser)socInit(firebase.auth().currentUser)}catch(e){}};
+var _mpLeaveS=mpLeave;mpLeave=function(){try{if(SOC.uid)socDb().ref("public/"+SOC.uid).update({on:""})}catch(e){}_mpLeaveS()};
+var _feedS=feed;feed=function(n,m,g,gc,u){if(u&&SOC.blk[u])return;_feedS(n,m,g,gc)};
+var _chatListS=chatList;chatList=function(){var o=ON.chat;ON.chat=o.filter(function(v){return !SOC.blk[v.u]});try{_chatListS()}finally{ON.chat=o}};
+var _plyS=plyDlg;plyDlg=function(){_plyS();document.querySelectorAll("#dlgB .mpRow button[data-k]").forEach(function(b){var k=b.dataset.k,r=G.remote[k],m=el("button","","⋯");m.style.background="#555";m.onclick=function(){socPlayerMenu(k,r&&r.n)};b.parentNode.appendChild(m)});
+ var fb=el("button","btn","👫 "+esc(T("Freunde einladen")));fb.style.cssText="width:100%;margin-top:6px";fb.onclick=function(){friendsDlg()};var l=document.querySelector("#dlgB .mpList");if(l)l.parentNode.insertBefore(fb,l.nextSibling)};
+var _mpPageS=mpPage;mpPage=function(){_mpPageS();try{var gs=document.querySelectorAll("#pgB .grid"),g=gs[gs.length-1];if(!g||$("socCard"))return;var n=Object.keys(SOC.req).length+Object.keys(SOC.unread).length;
+ var c=card("👫",T("Freunde"),T("Code, Anfragen, Chats, Einladungen"),{big:1,f:function(){if(mpReady())friendsPage()}});c.id="socCard";c.style.position="relative";c.insertAdjacentHTML("beforeend",'<span id="socBadge" style="position:absolute;top:8px;right:10px;background:#ff4d4d;color:#fff;border-radius:10px;padding:1px 7px;font:700 12px system-ui;'+(n?"":"display:none")+'">'+n+"</span>");g.insertBefore(c,g.firstChild)}catch(e){}};
+/* Übersetzungen */
+(function(){try{[["Freundschaftsanfrage von","Friend request from","Запрос в друзья от"],["ist jetzt dein Freund","is now your friend","теперь твой друг"],["Einladung","Invite","Приглашение"],["lädt dich ein in","invites you to","приглашает тебя в"],["Ablehnen","Decline","Отклонить"],["Das bist du selbst","That's you","Это ты"],
+["Ihr seid schon Freunde","You are already friends","Вы уже друзья"],["Spieler ist blockiert","Player is blocked","Игрок заблокирован"],["Anfrage gesendet","Request sent","Запрос отправлен"],["Anfrage nicht möglich","Request not possible","Запрос невозможен"],["Code hat 6 Zeichen","Code has 6 characters","Код из 6 символов"],["Code nicht gefunden","Code not found","Код не найден"],
+["Blockieren","Block","Заблокировать"],["kann dir keine Anfragen, Einladungen oder Nachrichten mehr schicken, und du siehst seine Chat-Nachrichten nicht mehr.","can no longer send you requests, invites or messages, and you won't see their chat messages.","больше не сможет отправлять запросы, приглашения и сообщения, а его сообщения в чате будут скрыты."],["Blockiert","Blocked","Заблокировано"],
+["Beleidigung","Insults","Оскорбления"],["Cheaten / Hacken","Cheating / hacking","Читы / взлом"],["Spam","Spam","Спам"],["Unangemessener Name","Inappropriate name","Неприемлемое имя"],["Belästigung","Harassment","Преследование"],["Sonstiges","Other","Другое"],["Spieler melden","Report player","Пожаловаться на игрока"],
+["Was ist passiert? (optional)","What happened? (optional)","Что случилось? (необязательно)"],["Melden","Report","Пожаловаться"],["Danke, Meldung gesendet","Thanks, report sent","Спасибо, жалоба отправлена"],["Als Freund hinzufügen","Add as friend","Добавить в друзья"],["Nachricht schreiben","Send message","Написать сообщение"],["Freund entfernen","Remove friend","Удалить из друзей"],
+["Blockierung aufheben","Unblock","Разблокировать"],["Erst einem Raum beitreten","Join a room first","Сначала войди в комнату"],["Einladung gesendet","Invite sent","Приглашение отправлено"],["Einladung nicht möglich","Invite not possible","Приглашение невозможно"],["Freunde","Friends","Друзья"],["Dein Freundescode","Your friend code","Твой код друга"],["Kopieren","Copy","Копировать"],
+["Hinzufügen","Add","Добавить"],["Kopiert","Copied","Скопировано"],["Freund hinzufügen","Add friend","Добавить друга"],["Anfrage senden","Send request","Отправить запрос"],["Anfragen","Requests","Запросы"],["möchte dein Freund sein","wants to be your friend","хочет добавить тебя в друзья"],
+["Noch keine Freunde – teile deinen Code oder füge jemanden aus der Spielerliste hinzu.","No friends yet – share your code or add someone from the player list.","Пока нет друзей – поделись кодом или добавь кого-то из списка игроков."],["Spielt in","Playing in","Играет в"],["Online","Online","В сети"],["Offline","Offline","Не в сети"],["Aufheben","Unblock","Снять"],
+["Tipp: Melde dich im Profil mit E-Mail an, damit Freunde und Code auf jedem Gerät erhalten bleiben.","Tip: sign in with e-mail in your profile so friends and code stay on every device.","Совет: войди по e-mail в профиле, чтобы друзья и код сохранились на всех устройствах."],["Freunde einladen","Invite friends","Пригласить друзей"],["Im selben Raum","In the same room","В той же комнате"],["Code, Anfragen, Chats, Einladungen","Code, requests, chats, invites","Код, запросы, чаты, приглашения"]
+].forEach(function(r){EN[r[0]]=EN[r[0]]||r[1];RU[r[0]]=RU[r[0]]||r[2]})}catch(e){}})();
+/* Klappmenü neben der Minikarte: ☰ blendet Shop, Aufträge und die Online-Knöpfe ein/aus */
+(function(){try{var h=$("hud");if(!h||$("hFold"))return;var st=document.createElement("style");st.textContent=
+ "#hFold{left:calc(max(66px,env(safe-area-inset-left) + 66px) + 118px);top:max(10px,env(safe-area-inset-top));display:none;font-size:22px}#hud.roam #hFold{display:flex}"+
+ "#hud.roam:not(.hfo) #hShop,#hud.roam:not(.hfo) #hMis,#hud:not(.hfo) #mpBar{display:none!important}#hud.roam.hfo #hShop,#hud.roam.hfo #hMis{transform:translateY(52px)}#hud.hfo #mpBar{transform:translateY(54px)}#hud.hfo #hFold{background:rgba(61,139,255,.85)}"+
+ "#hud.hfo #mpFeed{transform:translateY(0)}";document.head.appendChild(st);
+ var b=document.createElement("button");b.className="hb";b.id="hFold";b.textContent="☰";h.appendChild(b);if(SET.hfo)h.classList.add("hfo");
+ var n=document.createElement("span");n.id="hFoldN";n.style.cssText="position:absolute;top:-4px;right:-4px;background:#ff4d4d;color:#fff;border-radius:9px;padding:0 5px;font:700 11px system-ui;display:none";b.appendChild(n);
+ b.addEventListener("pointerdown",function(e){e.preventDefault();e.stopPropagation();var o=h.classList.toggle("hfo");b.firstChild.nodeValue=o?"✕":"☰";SET.hfo=o;try{saveSet()}catch(x){}SFX.click()});if(SET.hfo)b.firstChild.nodeValue="✕"}catch(e){}})();
+var _socRefF=socRefresh;socRefresh=function(){_socRefF();var n=Object.keys(SOC.req).length+Object.keys(SOC.unread).length,s=$("hFoldN");if(s){s.textContent=n;s.style.display=n?"":"none"}};
 
 </script>
 <script>if("serviceWorker" in navigator&&location.protocol==="https:"&&!/ParkPilotApp/.test(navigator.userAgent))navigator.serviceWorker.register("sw.js").catch(function(){})</script></body></html>
