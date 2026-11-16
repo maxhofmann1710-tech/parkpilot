@@ -1,0 +1,71 @@
+name: Park Pilot App
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths: [ 'bauen-parkpilot-app.sh', '.github/workflows/parkpilot-app.yml', 'index.html', 'parkpilot/index.html' ]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Code holen
+        uses: actions/checkout@v5
+
+      - name: Android-Projekt erzeugen
+        run: bash bauen-parkpilot-app.sh
+
+      - name: Java 17 einrichten
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Android SDK einrichten
+        run: |
+          SDK="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}}"
+          SM="$SDK/cmdline-tools/latest/bin/sdkmanager"
+          if [ ! -x "$SM" ]; then
+            echo "sdkmanager fehlt, lade die Android-Kommandozeilen-Tools"
+            mkdir -p "$SDK/cmdline-tools"
+            curl -sSL -o /tmp/clt.zip https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip
+            unzip -q /tmp/clt.zip -d /tmp/clt
+            rm -rf "$SDK/cmdline-tools/latest"
+            mv /tmp/clt/cmdline-tools "$SDK/cmdline-tools/latest"
+          fi
+          yes | "$SM" --licenses > /dev/null || true
+          "$SM" "platforms;android-36" "build-tools;35.0.0"
+          echo "ANDROID_HOME=$SDK" >> "$GITHUB_ENV"
+          echo "ANDROID_SDK_ROOT=$SDK" >> "$GITHUB_ENV"
+
+      - name: Gradle einrichten
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14.3'
+
+      - name: App bauen
+        working-directory: android-app
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        run: |
+          if [ -z "$KEYSTORE_PASSWORD" ]; then
+            echo "FEHLER: Das Secret KEYSTORE_PASSWORD fehlt (Settings > Secrets and variables > Actions)."
+            exit 1
+          fi
+          gradle --no-daemon assembleRelease bundleRelease
+
+      - name: SHA-1 fuer Google-Login anzeigen
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        run: |
+          echo "Diesen SHA-1-Wert in Firebase bei der Android-App eintragen:"
+          keytool -list -v -storetype pkcs12 -keystore android-app/keystore/abowaechter-release.p12 -storepass "$KEYSTORE_PASSWORD" | grep -E "SHA1|SHA-1"
+
+      - name: Ergebnis bereitstellen
+        uses: actions/upload-artifact@v4
+        with:
+          name: ParkPilot-App-Nativ
+          path: |
+            android-app/app/build/outputs/apk/release/*.apk
+            android-app/app/build/outputs/bundle/release/*.aab
