@@ -637,7 +637,7 @@ function World(){this.ob=[];this.grid={};this.chunks={};this.dyn=[];this.coins=[
 World.prototype.add=function(o){this.ob.push(o);var r=Math.max(o.hw,o.hl)*1.5,x0=Math.floor((o.x-r)/20),x1=Math.floor((o.x+r)/20),z0=Math.floor((o.z-r)/20),z1=Math.floor((o.z+r)/20);
  for(var i=x0;i<=x1;i++)for(var j=z0;j<=z1;j++){var k=i+","+j;(this.grid[k]=this.grid[k]||[]).push(o)}};
 World.prototype.near=function(x,z){var out=[],seen=new Set(),gx=Math.floor(x/20),gz=Math.floor(z/20);for(var i=gx-1;i<=gx+1;i++)for(var j=gz-1;j<=gz+1;j++){var l=this.grid[i+","+j];if(l)l.forEach(function(o){if(!seen.has(o)){seen.add(o);out.push(o)}})}return out};
-World.prototype.geo=function(x,z){var cs=LITE?110:60,k=Math.floor(x/cs)+","+Math.floor(z/cs);return this.chunks[k]||(this.chunks[k]=new Geo())};
+World.prototype.geo=function(x,z){var cs=LITE?72:60,k=Math.floor(x/cs)+","+Math.floor(z/cs);return this.chunks[k]||(this.chunks[k]=new Geo())};
 World.prototype.finish=function(){var me=this;this.cm=[];Object.keys(this.chunks).forEach(function(k){var g=me.chunks[k];if(g.n)me.cm.push(new Mesh(g))});this.chunks={}};
 World.prototype.flush=function(){var me=this;Object.keys(this.chunks).forEach(function(k){var g=me.chunks[k];if(g.n)me.cm.push(new Mesh(g))});this.chunks={}};
 World.prototype.free=function(){(this.cm||[]).forEach(function(m){m.free()})};
@@ -1029,7 +1029,7 @@ function musTick(){if(!AU.on||!MUS.on||SET.vMu<=0)return;var c=AU.ctx,now=c.curr
   MUS.t+=spb;MUS.bar++}}
 
 /* ===== Speicher, Sprache, Einstellungen ===== */
-var VER="2.0.3",BUILD="16.11.2026",DEV="Engelcode";
+var VER="2.1.0",BUILD="16.11.2026",DEV="Engelcode";
 function rd(k,d){try{var v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}}
 function wr(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 var DEF={vRad:70,cstyle:"vivid",cb:"off",glow:1,shakeI:1,pix:true,viol:1,polL:2,wxMode:"auto",realism:"arcade",weather:true,xh:true,xhs:"ring",xhc:"#ffffff",xhz:9,camD:100,hudL:{},q:"auto",rs:100,autoRes:true,sh:1,dist:420,fx:true,spec:true,mirror:true,aa:true,fps:60,showFps:false,eco:false,vM:80,vE:75,vS:85,vMu:40,ctl:"wheel",sens:100,assist:true,lefty:false,vib:true,unit:"kmh",fov:72,cam:"chase",mm:true,lang:"en",shake:true,
@@ -1792,7 +1792,7 @@ function pushOut(P,o,r){var dx=P.x-o.x,dz=P.z-o.z,cs=o.c==null?1:o.c,sn=o.s==nul
  P.x=o.x+lx*cs+lz*sn;P.z=o.z-lx*sn+lz*cs;return true}
 function solidAround(P,r,skip){var w=G.world,l=w.near(P.x,P.z);(w.dyn||[]).forEach(function(o){if(o!==P&&o!==skip&&o.c!=null&&!o.dead&&o.kind!=="ped"&&o.kind!=="cop"&&Math.abs(o.x-P.x)<8&&Math.abs(o.z-P.z)<8)l.push(o)});
  if(G.car&&!G.car.hidden&&P!==G.car&&Math.abs(G.car.x-P.x)<8&&Math.abs(G.car.z-P.z)<8&&l.indexOf(G.car)<0)l.push(G.car);
- if(G.traffic)G.traffic.cars.forEach(function(o){if(Math.abs(o.x-P.x)<6&&Math.abs(o.z-P.z)<6)l.push(o)});var hit=false;l.forEach(function(o){if(o.hw&&o.kind!=="coin"&&pushOut(P,o,r))hit=true});return hit}
+ if(G.traffic)G.traffic.cars.forEach(function(o){if(Math.abs(o.x-P.x)<6&&Math.abs(o.z-P.z)<6)l.push(o)});var hit=false;var py=(P.jy||0);l.forEach(function(o){if(o.hw&&o.kind!=="coin"&&!(py>.05&&window.objTop&&objTop(o)<py+.1)&&pushOut(P,o,r))hit=true});return hit}
 function bounds(P){var w=G.world,b=w.bnd;if(!b){b=[1e9,-1e9,1e9,-1e9];(w.route||[[0,0]]).forEach(function(p){b[0]=Math.min(b[0],p[0]);b[1]=Math.max(b[1],p[0]);b[2]=Math.min(b[2],p[1]);b[3]=Math.max(b[3],p[1])});if(w.gridp){var g=w.gridp;b=[g.O-10,g.O+g.N*g.C+g.RW+10,g.O-10,g.O+g.N*g.C+g.RW+10]}else b=[b[0]-120,b[1]+120,b[2]-120,b[3]+120];w.bnd=b}
  P.x=clamp(P.x,b[0],b[1]);P.z=clamp(P.z,b[2],b[3])}
 
@@ -1908,7 +1908,7 @@ function footUpdate(dt,sp){if(!footOK())return;pdx();if(!G.dogs)decoInit();var P
    if(IN.atk&&!wpnDef(PD.cw).melee)P.h=G.camH;
    P.vx=lerp(P.vx,Math.sin(ang)*tv,Math.min(1,dt*10));P.vz=lerp(P.vz,Math.cos(ang)*tv,Math.min(1,dt*10));
    if(mag>.12&&!G.lookOn()&&!IN.atk){var dc=Math.atan2(Math.sin(P.h-G.camH),Math.cos(P.h-G.camH));G.camH+=dc*Math.min(1,dt*1.3)*(Math.abs(dc)<2.4?1:0)}}
-  if(P.jy==null)P.jy=0;if(P.jy>0||P.vy>0){P.vy=(P.vy||0)-15*dt;P.jy=Math.max(0,P.jy+P.vy*dt);if(P.jy===0&&P.vy<0){P.vy=0;SFX.fall()}}P.x+=P.vx*dt;P.z+=P.vz*dt;if(P.push){P.x+=P.push[0];P.z+=P.push[1];P.push=null}var spd=Math.hypot(P.vx,P.vz);P.ph+=dt*spd*1.75;solidAround(P,.3);bounds(P);P.c=Math.cos(P.h);P.s=Math.sin(P.h);
+  if(P.jy==null)P.jy=0;if(P.jy>(P.gy||0)||P.vy>0){P.vy=(P.vy||0)-15*dt;P.jy=Math.max(P.gy||0,P.jy+P.vy*dt);if(P.jy<=(P.gy||0)&&P.vy<0){P.vy=0;SFX.fall()}}P.x+=P.vx*dt;P.z+=P.vz*dt;if(P.push){P.x+=P.push[0];P.z+=P.push[1];P.push=null}var spd=Math.hypot(P.vx,P.vz);P.ph+=dt*spd*1.75;solidAround(P,.3);bounds(P);P.c=Math.cos(P.h);P.s=Math.sin(P.h);
   peds().forEach(function(p){if(p.mode===3)return;var dx=p.x-P.x,dz=p.z-P.z,d=Math.hypot(dx,dz);if(d<.55&&d>0){p.x+=dx/d*(.55-d)*.6;p.z+=dz/d*(.55-d)*.6;if(spd>3){p.st=Math.min(1,(p.st||0)+dt*1.2);p.tx=P.x;p.tz=P.z}}});
   P.atkT-=dt;P.sw=Math.max(0,P.sw-dt);var W=wpnDef(PD.cw);if(IN.atk&&(W.auto||IN.atkE)){IN.atkE=false;attack()}
   // Einsteigen / Abschließen
@@ -2455,8 +2455,8 @@ function hudEdInit(){var ov=$("hudEd");function at(e){var best=null;HUDE.forEach
  var s=$("steerS"),k=s.firstChild,on=false;function mv(e){var r=s.getBoundingClientRect(),v=G.rot?((e.clientY-r.top)/r.height):((e.clientX-r.left)/r.width);IN.sl=clamp(v*2-1,-1,1);k.style.left=(IN.sl*.5+.5)*100+"%"}
  s.addEventListener("pointerdown",function(e){e.preventDefault();s.setPointerCapture(e.pointerId);on=true;mv(e)});s.addEventListener("pointermove",function(e){if(on)mv(e)});["pointerup","pointercancel"].forEach(function(t){s.addEventListener(t,function(){on=false;IN.sl=0;k.style.left="50%"})});
  // Springen: am Joystick weit nach oben wischen
- var j=$("joy");j.addEventListener("pointermove",function(e){if(!G.P||!G.P.on||G.P.jy>0)return;var r=j.getBoundingClientRect(),cy=r.top+r.height/2,cx=r.left+r.width/2,up=G.rot?(cx-e.clientX):(cy-e.clientY);if(up>r.height*.95){G.P.vy=5.2;G.P.jy=.01;SFX.swing()}});
- window.addEventListener("keydown",function(e){if(e.code==="KeyJ"&&G.P&&G.P.on&&!(G.P.jy>0)){G.P.vy=5.2;G.P.jy=.01}});hudApply()}
+ var j=$("joy");j.addEventListener("pointermove",function(e){if(!G.P||!G.P.on||G.P.jy>(G.P.gy||0)+.02)return;var r=j.getBoundingClientRect(),cy=r.top+r.height/2,cx=r.left+r.width/2,up=G.rot?(cx-e.clientX):(cy-e.clientY);if(up>r.height*.95){G.P.vy=7.2;G.P.jy=Math.max(G.P.jy||0,.01);SFX.swing()}});
+ window.addEventListener("keydown",function(e){if(e.code==="KeyJ"&&G.P&&G.P.on&&!(G.P.jy>(G.P.gy||0)+.02)){G.P.vy=7.2;G.P.jy=Math.max(G.P.jy||0,.01)}});hudApply()}
 /* Fadenkreuz */
 function drawXH(x,cx,cy,col){if(SET.xh===false)return;var z=SET.xhz||9,st=SET.xhs||"ring",c=col||SET.xhc||"#ffffff";x.strokeStyle=c;x.fillStyle=c;x.lineWidth=2;x.beginPath();
  if(st==="dot"){x.arc(cx,cy,Math.max(2,z*.3),0,7);x.fill();return}if(st==="ring"||st==="ringx"){x.arc(cx,cy,z,0,7)}if(st==="cross"||st==="ringx"||st==="t"){var g=z*.5,l=z*1.6;x.moveTo(cx-l,cy);x.lineTo(cx-g,cy);x.moveTo(cx+g,cy);x.lineTo(cx+l,cy);x.moveTo(cx,cy+g);x.lineTo(cx,cy+l);if(st!=="t"){x.moveTo(cx,cy-l);x.lineTo(cx,cy-g)}}if(st==="ring"){x.moveTo(cx+1.5,cy);x.arc(cx,cy,1.5,0,7)}x.stroke()}
@@ -2808,6 +2808,7 @@ function ecMark(w){return '<svg class="ecm" viewBox="0 0 140 70" width="'+w+'" h
 }catch(e){console.warn(e)}})();
 /* Neuigkeiten – neueste zuerst. Texte: [Deutsch, Englisch, Russisch] */
 var CHANGELOG=[
+ {v:"2.1.0",d:"18.11.2026",n:[["Pausenmenü übersichtlich in zwei Spalten – „Hauptmenü“ ist immer sichtbar","Pause menu in two columns – \"Main menu\" is always visible","Меню паузы в две колонки – «Главное меню» всегда видно"],["Spielfeld-Grenze mit Energiefeld: man kann nicht mehr aus der Stadt springen oder fliegen","Map boundary with an energy field: you can no longer jump or fly out of the city","Граница карты с энергополем: из города больше не выпрыгнуть и не вылететь"],["Mit dem Auto auf andere Autos und Mauern springen und darauf fahren – über niedrige Objekte springt man einfach drüber","Jump your car onto other cars and walls and drive on them – jump right over low objects","Запрыгивай машиной на другие машины и стены – через низкие объекты можно перепрыгнуть"],["Zu Fuß höher springen: auf Autodächer, Bänke und Mauern","Higher jumps on foot: onto car roofs, benches and walls","Пешком прыжки выше: на крыши машин, скамейки и стены"],["Stadt voller Details: Bänke, Mülleimer, Hydranten, Blumenkübel, Fahrräder, Bushaltestellen, Markisen, Balkone, Dachtechnik, Werbetafeln und mehr Bäume","City full of details: benches, bins, hydrants, planters, bikes, bus stops, awnings, balconies, rooftop units, billboards and more trees","Город полон деталей: скамейки, урны, гидранты, клумбы, велосипеды, остановки, маркизы, балконы, рекламные щиты и больше деревьев"],["Trotz mehr Details weniger Grafiklast durch kleinere Weltblöcke","Less graphics load despite more details thanks to smaller world blocks","Меньше нагрузки на графику несмотря на детали"]]},
  {v:"2.0.3",d:"16.11.2026",n:[["Parksensoren neu: messen über die ganze Stoßstange, zeigen links/Mitte/rechts und den Abstand in Metern – keine Fehlalarme mehr durch Autos neben dir","New parking sensors: measure across the whole bumper, show left/centre/right and the distance in metres – no false alarms from cars beside you","Новые парктроники: вся ширина бампера, зоны слева/центр/справа и расстояние в метрах"],["Parken: jedes Level mit eigener Farbe, VORWÄRTS oder RÜCKWÄRTS einparken wird groß und farbig angezeigt, Pfeil im Parkfeld zeigt die Richtung","Parking: every level has its own colour, FORWARDS or REVERSE is shown big and coloured, an arrow in the bay shows the direction","Парковка: у каждого уровня свой цвет, ПЕРЕДОМ или ЗАДОМ крупно и цветом, стрелка в месте парковки"],["Version wird jetzt als Beta angezeigt","Version is now shown as beta","Версия отображается как бета"]]},
  {v:"2.0.2",d:"16.11.2026",n:[["Verkehr: Verfolgungsjagden fahren auf den Fahrspuren statt quer durch die Stadt, KI-Autos und Polizei halten Abstand statt ineinander zu fahren","Traffic: chases drive in lanes instead of across the city, AI cars and police keep distance instead of crashing into each other","Трафик: погони едут по полосам, ИИ и полиция держат дистанцию"],["Spaß-Menü und alle Fenster lassen sich scrollen","Fun menu and all dialogs can be scrolled","Меню веселья и все окна прокручиваются"],["Eigene Texturen: PNGs im Ordner tex ersetzen die eingebauten","Custom textures: PNGs in the tex folder replace the built-in ones","Свои текстуры: PNG в папке tex заменяют встроенные"]]},
  {v:"2.0.1",d:"16.11.2026",n:[["Neue Anmeldung: klare Meldungen, Ladeanzeige, Passwort anzeigen, Passwort vergessen, Google-Login","New sign-in: clear messages, loading indicator, show password, forgot password, Google sign-in","Новый вход: понятные сообщения, индикатор загрузки, показ пароля, сброс пароля, вход через Google"],["FPS-Anzeige lässt sich wieder ausschalten – Einstellungen wirken jetzt sofort und nicht erst beim nächsten Umschalten","FPS display can be turned off again – settings now apply instantly instead of one switch late","Счётчик FPS снова отключается – настройки применяются сразу"]]},
@@ -2913,7 +2914,7 @@ fpHand=function(dm,cam,W){var P=G.P,h=G.camH,pt=G.look[1]||0,spd=Math.hypot(P.vx
  dm(fpArm(-1),M4.mul(M4.mul(base,M4.mul(M4.trs(.0+sway,-.18+bob+kick*.12,.17-kick*.25,.4),M4.rX(-.08+kick))),SC))};
 /* Sprung-Knopf (zusätzlich zum Hochwischen) */
 (function(){try{var fb=$("fBtns");if(!fb||$("fJump"))return;var b=document.createElement("button");b.id="fJump";b.textContent="⤒";b.style.fontSize="34px";fb.insertBefore(b,fb.firstChild);
- b.addEventListener("pointerdown",function(e){e.preventDefault();var P=G.P;if(P&&P.on&&!(P.jy>0)&&!(P.down>0)){P.vy=5.4;P.jy=.01;if(SFX.click)SFX.click()}})}catch(e){}})();
+ b.addEventListener("pointerdown",function(e){e.preventDefault();var P=G.P;if(P&&P.on&&!(P.jy>(P.gy||0)+.02)&&!(P.down>0)){P.vy=7.2;P.jy=Math.max(P.jy||0,.01);if(SFX.click)SFX.click()}})}catch(e){}})();
 /* Zielen mit Waffen: Knopf 🎯 – Kamera über die Schulter, Zoom, Fadenkreuz, präzise Schüsse */
 (function(){try{var fb=$("fBtns");if(!fb||$("fAim"))return;var b=document.createElement("button");b.id="fAim";b.textContent="🎯";b.style.fontSize="26px";b.style.display="none";fb.insertBefore(b,fb.firstChild);
  b.addEventListener("pointerdown",function(e){e.preventDefault();G.aim=!G.aim;b.classList.toggle("on",!!G.aim);SFX.click()})}catch(e){}})();
@@ -3640,12 +3641,12 @@ function fMesh(k){if(FM[k])return FM[k];var g=new Geo();
  else if(k==="taxi"){g.cyl(0,0,0,2.2,.06,12,"#ffffff",[0,LITE?15:5],"y")}
  return FM[k]=new Mesh(g)}
 /* --- Sprung-Physik: Höhe y, Fall mit Schwerkraft, wenig Luftlenkung, Landung mit Ruck --- */
-var _upFun=update;update=function(dt){var c=G.car,air=c&&!FUN.flyNow&&(c.y>.02||c.vy>0),h0=c&&c.h,vx0=c&&c.vx,vz0=c&&c.vz,vf0=c&&c.vf;_upFun(dt);if(!c||G.view!=="game")return;
+var _upFun=update;update=function(dt){var c=G.car,gy0=c?(c.gy||0):0,air=c&&!FUN.flyNow&&(c.y>gy0+.02||c.vy>0),h0=c&&c.h,vx0=c&&c.vx,vz0=c&&c.vz,vf0=c&&c.vf;_upFun(dt);if(!c||G.view!=="game")return;
  if(funOn("turbo")&&freeLike()){if(c.__ba==null){c.__ba=c.acc;c.__bv=c.vmax}c.acc=c.__ba*1.9;c.vmax=c.__bv*1.45}else if(c.__ba!=null){c.acc=c.__ba;c.vmax=c.__bv;c.__ba=null}
  if(FUN.flyNow)return;rampRide(c);
  if(air){c.h=h0+(c.h-h0)*.15;c.vx=vx0;c.vz=vz0;c.vf=vf0;c.c=Math.cos(c.h);c.s=Math.sin(c.h)}
- if(c.y>.02||c.vy>0){var g=funOn("moon")?3.4:15;c.vy=(c.vy||0)-g*dt;c.y=(c.y||0)+c.vy*dt;FUN.air+=dt;c.pitch=clamp(-c.vy*.03,-.3,.3);
-  if(c.y<=0&&c.vy<0){var imp=-c.vy;c.y=0;c.vy=0;c.pitch=0;if(imp>5){G.shake=Math.min(1,imp/14);if(SFX.crash)SFX.crash(Math.min(1,imp/16));for(var i=0;i<8;i++)spark(c.x+(Math.random()-.5)*2,.2,c.z+(Math.random()-.5)*3)}
+ if(window.groundTop)c.gy=groundTop(c);var GY=c.gy||0;if(c.y<GY-.4)c.gy=GY=0;if(c.y>GY+.02||c.vy>0){var g=funOn("moon")?3.4:15;c.vy=(c.vy||0)-g*dt;c.y=(c.y||0)+c.vy*dt;FUN.air+=dt;c.pitch=clamp(-c.vy*.03,-.3,.3);
+  if(c.y<=GY&&c.vy<0){var imp=-c.vy;c.y=GY;c.vy=0;c.pitch=0;if(imp>5){G.shake=Math.min(1,imp/14);if(SFX.crash)SFX.crash(Math.min(1,imp/16));for(var i=0;i<8;i++)spark(c.x+(Math.random()-.5)*2,.2,c.z+(Math.random()-.5)*3)}
    if(FUN.air>.45){var pts=Math.round(FUN.air*420+FUN.airMax*60);combo(T("Sprung")+" "+FUN.air.toFixed(1)+" s",pts);fInc("jumps");fMax("air",+FUN.air.toFixed(2));fMax("height",+FUN.airMax.toFixed(1))}if(window.landHook)try{landHook(c,imp)}catch(e){}FUN.air=0;FUN.airMax=0}
   else FUN.airMax=Math.max(FUN.airMax,c.y)}};
 var _camFun=camera;camera=function(dt){var cm=_camFun(dt),c=G.car;if(G.view==="game"&&G.P&&G.P.on&&G.P.jy>1.5&&cm&&cm.eye){var py=G.P.jy-1.5;cm.eye=[cm.eye[0],cm.eye[1]+py,cm.eye[2]];cm.tgt=[cm.tgt[0],cm.tgt[1]+py,cm.tgt[2]];return cm}if(c&&c.y>0&&(G.view==="game")&&cm&&cm.eye){var y=c.y;cm.eye=[cm.eye[0],cm.eye[1]+y*.85,cm.eye[2]];cm.tgt=[cm.tgt[0],cm.tgt[1]+y,cm.tgt[2]]}return cm};
@@ -3852,7 +3853,7 @@ var _tmM=toMenu;toMenu=function(){PROPS=[];return _tmM.apply(this,arguments)};
 FTOG.push(["fly","🛸","Fliegendes Auto","Mit ⬆ / ⬇ aufsteigen und sinken – über Häuser hinweg"],["jet","🎒","Jetpack (zu Fuß)","Sprung-Knopf gedrückt halten zum Fliegen"]);
 var FLY={up:0,dn:0,jet:0};
 /* Kollisionen über Dächern ignorieren */
-(function(){var _st=Car.prototype.step,EMPTY=[];Car.prototype.step=function(dt,inp,world,ev){if(this===G.car&&(this.y||0)>2.2&&world){var px=Object.create(world);px.near=function(){return EMPTY};px.dyn=EMPTY;return _st.call(this,dt,inp,px,ev)}return _st.apply(this,arguments)}})();
+
 /* Flugsteuerung: läuft vor dem Sprung-Code, der bei Flugmodus keine Schwerkraft anwendet */
 var _upFly=update;update=function(dt){var c=G.car,fly=funOn("fly")&&freeLike()&&c&&!onFoot()&&G.view==="game";
  if(fly&&((c.y||0)>0||FLY.up)){var tv=FLY.up?7:FLY.dn?-7:0,y0=c.y||0;c.vy=0;FUN.flyNow=1;try{_upFly(dt)}finally{FUN.flyNow=0}c.y=Math.max(0,Math.min(140,y0+tv*dt));c.vy=0;c.pitch=clamp(-tv*.02-(IN.gas||0)*.03,-.25,.25);c.roll=clamp(-(IN.steer||0)*.15,-.2,.2);
@@ -4061,7 +4062,7 @@ var PSR=2.0;
  var a=document.createElement("div");a.id="lvDir";h.appendChild(a);var b=document.createElement("div");b.id="lvBig";h.appendChild(b)}catch(e){}})();
 function psCol(d){return d==null?"rgba(255,255,255,.18)":d<.3?"#ff2f45":d<.6?"#ff8a1f":d<1.2?"#ffd23a":"#2fd27a"}
 function psTick(c,w){var dir=IN.gear==="R"?-1:1,ch=c.c!=null?c.c:Math.cos(c.h),sh=c.s!=null?c.s:Math.sin(c.h),fx=Math.sin(c.h)*dir,fz=Math.cos(c.h)*dir,rx=Math.cos(c.h),rz=-Math.sin(c.h),bx=c.x+fx*c.hl,bz=c.z+fz*c.hl,Z=[null,null,null];
- var L=w.near(c.x,c.z).concat(w.dyn||[]);for(var i=0;i<L.length;i++){var o=L[i];if(!o||o===c||o.hw==null||o.kind==="me"||o.kind==="player")continue;var oc=o.c!=null?o.c:Math.cos(o.h||0),os=o.s!=null?o.s:Math.sin(o.h||0);if(Math.abs(o.x-c.x)>14||Math.abs(o.z-c.z)>14)continue;
+ var L=w.near(c.x,c.z).concat(w.dyn||[]);for(var i=0;i<L.length;i++){var o=L[i];if(!o||o===c||o.hw==null||o.kind==="me"||o.kind==="player")continue;if(window.objTop&&objTop(o)<(c.y||0)+.1)continue;var oc=o.c!=null?o.c:Math.cos(o.h||0),os=o.s!=null?o.s:Math.sin(o.h||0);if(Math.abs(o.x-c.x)>14||Math.abs(o.z-c.z)>14)continue;
   for(var k=0;k<7;k++){var u=(k/6*2-1)*c.hw*1.02,px=bx+rx*u,pz=bz+rz*u,dx=px-o.x,dz=pz-o.z,lx=dx*oc-dz*os,lz=dx*os+dz*oc,qx=clamp(lx,-o.hw,o.hw),qz=clamp(lz,-o.hl,o.hl),d=Math.hypot(lx-qx,lz-qz);if(d>PSR)continue;
    var wx=o.x+qx*oc+qz*os,wz=o.z-qx*os+qz*oc,ah=(wx-bx)*fx+(wz-bz)*fz;if(ah<-.12)continue;var lat=(wx-c.x)*rx+(wz-c.z)*rz;if(Math.abs(lat)>c.hw+.45)continue;var zi=lat<-c.hw*.35?0:lat>c.hw*.35?2:1;if(dir<0)zi=2-zi;if(Z[zi]==null||d<Z[zi])Z[zi]=d}}
  var m=Math.min(Z[0]==null?9:Z[0],Z[1]==null?9:Z[1],Z[2]==null?9:Z[2]);G.psD=m<9?m:null;G.psZ=Z;G.psDir=dir;
@@ -4078,6 +4079,80 @@ if(typeof footDraw==="function"){var _fdPark=footDraw;footDraw=function(dm,vis){
  dm(padMesh(),M4.mul(M4.trs(t.x,.03,t.z,t.h),scaleM(Math.min(1,t.hw/1.6),1,Math.min(1.1,t.hl/2.4))),rev?[3,.9,.2]:[.3,2.6,1],a)}catch(e){}}}
 if(typeof lifeTick==="function"){var _ltPark=lifeTick;lifeTick=function(dt){_ltPark(dt);try{lvDirTick();psUI()}catch(e){}}}
 (function(){[["HINTEN","REAR","СЗАДИ"],["VORNE","FRONT","СПЕРЕДИ"],["RÜCKWÄRTS einparken","Park in REVERSE","Парковка ЗАДОМ"],["VORWÄRTS einparken","Park FORWARDS","Парковка ПЕРЕДОМ"]].forEach(function(r){EN[r[0]]=EN[r[0]]||r[1];RU[r[0]]=RU[r[0]]||r[2]})})();
+
+/* ===== Welt-Fixes: Pausenmenü kompakt (Hauptmenü immer sichtbar), Spielfeld-Grenze mit Energiefeld, auf Autos landen und über Objekte springen ===== */
+(function(){var st=document.createElement("style");st.textContent="#pause .box{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-height:calc(100vh - 16px);overflow-y:auto;touch-action:pan-y;align-content:start;width:min(560px,92vw)}#pause .box *{touch-action:pan-y}#pause .box h3,#pause #pRes{grid-column:1/-1}#pause .box .btn{margin:0!important;min-height:44px;padding:8px 10px;font-size:15px}#pause #pMenu{grid-column:1/-1;background:linear-gradient(135deg,#3a4458,#2a3242)}";document.head.appendChild(st);
+ try{var pm=$("pMenu");if(pm&&pm.innerHTML.indexOf("🏠")<0){pm.removeAttribute("data-t");pm.innerHTML="🏠 <span data-t>Hauptmenü</span>";if(window.trDom)try{trDom()}catch(e){}}}catch(e){}})();
+/* --- Höhen der Hindernisse merken --- */
+(function(){function topWrap(name,f){var o=World.prototype[name];if(!o)return;World.prototype[name]=function(){var n=this.ob.length,r=o.apply(this,arguments);for(var i=n;i<this.ob.length;i++)if(this.ob[i].top==null)this.ob[i].top=f.apply(this,arguments);return r}}
+ topWrap("car",function(){return 1.55});topWrap("cone",function(){return .8});topWrap("wall",function(x,z,hw,hl,h,ht){return ht||1});topWrap("pillar",function(){return 3.2});topWrap("tree",function(){return 9});topWrap("lamp",function(){return 6.5});topWrap("building",function(x,z,hw,hl,ht){return ht+1.5});topWrap("sign",function(){return 3})})();
+function objTop(o){if(o.top!=null)return o.top;var k=o.kind;if(k==="car"||k==="npc"||k==="rp"||k==="ai"||k==="mover")return 1.55;if(k==="cone")return .8;if(k==="ped"||k==="cop")return 1.85;if(o.d&&o.hw)return 1.55;return 99}
+function inBox(o,x,z,m){var oc=o.c!=null?o.c:Math.cos(o.h||0),os=o.s!=null?o.s:Math.sin(o.h||0),dx=x-o.x,dz=z-o.z,lx=dx*oc-dz*os,lz=dx*os+dz*oc;return Math.abs(lx)<o.hw+(m||0)&&Math.abs(lz)<o.hl+(m||0)}
+/* Boden unter dem Auto: höchstes Dach (Auto, Mauer, Kiste …) direkt darunter */
+function groundTop(c){var w=G.world;if(!w)return 0;var best=0,y=c.y||0,L=w.near(c.x,c.z).concat(w.dyn||[]),ch=Math.cos(c.h),sh=Math.sin(c.h),pts=[[0,0],[c.hw*.6,c.hl*.6],[-c.hw*.6,c.hl*.6],[c.hw*.6,-c.hl*.6],[-c.hw*.6,-c.hl*.6]];
+ for(var i=0;i<L.length;i++){var o=L[i];if(!o||o===c||o.hw==null)continue;var t=objTop(o);if(t>y+.35||t<=best)continue;var hit=0;for(var k=0;k<pts.length&&hit<2;k++){var px=c.x+pts[k][0]*ch+pts[k][1]*sh,pz=c.z-pts[k][0]*sh+pts[k][1]*ch;if(inBox(o,px,pz))hit++}if(hit>=2||hit&&inBox(o,c.x,c.z))best=t}return best}
+/* Kollisionen ignorieren, wenn man hoch genug darüber ist (Sprung / Dach / Flug) */
+(function(){var _st=Car.prototype.step,EMPTY=[];Car.prototype.step=function(dt,inp,world,ev){var y=this.y||0;if(this===G.car&&y>.12&&world){var px=Object.create(world);px.near=function(x,z){return world.near(x,z).filter(function(o){return objTop(o)>y+.12})};px.dyn=(world.dyn||EMPTY).filter(function(o){return o===G.car||objTop(o)>y+.12});return _st.call(this,dt,inp,px,ev)}return _st.apply(this,arguments)}})();
+/* --- Spielfeld-Grenze --- */
+var BND=null;
+function bndBuild(){BND=null;var w=G.world;if(!w)return;var xs=[],zs=[];(w.ob||[]).forEach(function(o){if(o.kind!=="wall")return;if(o.hl>60&&o.hw<2)xs.push(o.x);else if(o.hw>60&&o.hl<2)zs.push(o.z)});
+ var g=w.gridp;if(g&&(xs.length<2||zs.length<2)){var e=g.O-g.RW/2-1,f=g.O+g.N*g.C+g.RW/2+1;xs=[e,f];zs=[e,f]}
+ if(xs.length>=2&&zs.length>=2)BND={x0:Math.min.apply(null,xs)+1.6,x1:Math.max.apply(null,xs)-1.6,z0:Math.min.apply(null,zs)+1.6,z1:Math.max.apply(null,zs)-1.6}}
+function bndClamp(o,isCar){var B=BND;if(!B||!o)return;var m=isCar?Math.max(o.hl||0,o.hw||0):.4,hit=0;
+ if(o.x<B.x0+m){o.x=B.x0+m;if(o.vx<0)o.vx=-o.vx*.25;hit=1}if(o.x>B.x1-m){o.x=B.x1-m;if(o.vx>0)o.vx=-o.vx*.25;hit=1}if(o.z<B.z0+m){o.z=B.z0+m;if(o.vz<0)o.vz=-o.vz*.25;hit=1}if(o.z>B.z1-m){o.z=B.z1-m;if(o.vz>0)o.vz=-o.vz*.25;hit=1}
+ if(hit&&isCar){o.vf=o.vx*Math.sin(o.h)+o.vz*Math.cos(o.h);if(!BND.cd||G.t>BND.cd){BND.cd=G.t+1.5;G.shake=Math.max(G.shake||0,.3);if(SFX.crash)SFX.crash(.3);toast("⚡ "+T("Spielfeld-Grenze"),1000)}}}
+var _upB=update;update=function(dt){_upB(dt);try{if(G.view!=="game"||!BND)return;if(G.car)bndClamp(G.car,true);if(G.P&&G.P.on)bndClamp(G.P,false);if(FUN.ball)bndClamp(FUN.ball,false)}catch(e){}};
+var _mwB=mapWorld;mapWorld=function(id,cb,tr){return _mwB(id,function(){try{bndBuild()}catch(e){}if(cb)cb.apply(this,arguments)},tr)};
+/* Energiefeld sichtbar, wenn man nah dran ist */
+function bndDraw(dm){var B=BND;if(!B)return;var f=focus(),t=G.t||0,L=propMesh("line");function wallSeg(x,z,horiz,d){if(d>30)return;var a=(1-d/30)*.55*(.75+Math.sin(t*5)*.25);var cx=horiz?clamp(f.x,B.x0,B.x1):x,cz=horiz?z:clamp(f.z,B.z0,B.z1);
+  for(var k=0;k<6;k++)dm(L,M4.mul(M4.trs(cx,k*2.2+1,cz,0),horiz?scaleM(22,1.1,.04):scaleM(.04,1.1,22)),[.4,1.6,3.4],a*(1-k*.1))}
+ wallSeg(B.x0-1.6,0,false,f.x-B.x0);wallSeg(B.x1+1.6,0,false,B.x1-f.x);wallSeg(0,B.z0-1.6,true,f.z-B.z0);wallSeg(0,B.z1+1.6,true,B.z1-f.z)}
+if(typeof footDraw==="function"){var _fdBnd=footDraw;footDraw=function(dm,vis){_fdBnd.apply(this,arguments);try{bndDraw(dm)}catch(e){}}}
+/* Zu Fuß: auf Autos/Mauern landen + darüber springen */
+(function(){if(typeof footStep!=="function")return})();
+(function(){[["Spielfeld-Grenze","Edge of the map","Граница карты"],["Hauptmenü","Main menu","Главное меню"]].forEach(function(r){EN[r[0]]=EN[r[0]]||r[1];RU[r[0]]=RU[r[0]]||r[2]})})();
+/* Zu Fuß: Boden = Dach unter den Füßen (Autos, Mauern, Kisten) */
+function footGround(P){var w=G.world;if(!w)return 0;var best=0,y=P.jy||0,L=w.near(P.x,P.z).concat(w.dyn||[]);if(G.car&&!G.car.hidden)L.push(G.car);if(G.traffic)L=L.concat(G.traffic.cars);
+ for(var i=0;i<L.length;i++){var o=L[i];if(!o||o===P||o.hw==null||o.kind==="ped"||o.kind==="cop")continue;var t=objTop(o);if(o===G.car)t=(G.car.y||0)+1.55;if(t>y+.3||t<=best)continue;if(inBox(o,P.x,P.z,.1))best=t}return best}
+if(typeof lifeTick==="function"){var _ltGr=lifeTick;lifeTick=function(dt){try{var P=G.P;if(P&&P.on&&G.view==="game")P.gy=footGround(P)}catch(e){}_ltGr(dt)}}
+
+/* ===== Stadt-Details: Bänke, Mülleimer, Hydranten, Pflanzkübel, Bushaltestellen, Fahrradständer, Markisen, Balkone, Dachtechnik, Werbetafeln ===== */
+function decorFree(w,x,z,r){var L=w.near(x,z);for(var i=0;i<L.length;i++){var o=L[i];if(window.inBox&&inBox(o,x,z,r))return false}var R=w.roads||[];for(var k=0;k<R.length;k++){var q=R[k];if(Math.abs(x-q.x)<q.hw+r&&Math.abs(z-q.z)<q.hl+r)return false}return true}
+function decorObst(w,x,z,hw,hl,h,top){var o=new Obst(x,z,hw,hl,h,"wall");o.top=top;w.add(o)}
+function cityDecor(w){var g=w.gridp;if(!g||w.__decor)return;w.__decor=1;var _bx=Geo.prototype.box;Geo.prototype.box=function(a,b,c,d,e,f,h,col,m,o){return _bx.call(this,a,b,c,d,e,f,h,col,m,o||{noBot:true})};try{cityDecor2(w,g)}finally{Geo.prototype.box=_bx}w.flush()}
+function cityDecor2(w,g){var rnd=RNG(9091),O=g.O,C=g.C,RW=g.RW,N=g.N,B=C-RW,M=[.2,0];
+ function bench(x,z,h){var G2=w.geo(x,z),c=Math.cos(h),s=Math.sin(h);function P(a,b){return[x+a*c+b*s,z-a*s+b*c]}
+  var p=P(0,0);G2.box(p[0],.45,p[1],.9*Math.abs(c)+.25*Math.abs(s),.05,.9*Math.abs(s)+.25*Math.abs(c),0,"#9a6a3c",M);var q=P(0,-.24);G2.box(q[0],.8,q[1],.9*Math.abs(c)+.04*Math.abs(s),.25,.9*Math.abs(s)+.04*Math.abs(c),0,"#9a6a3c",M);
+  [-.75,.75].forEach(function(a){var r=P(a,0);G2.box(r[0],.22,r[1],.05,.22,.05,0,"#2e3136",[.5,9])});decorObst(w,x,z,Math.abs(c)*.9+Math.abs(s)*.3,Math.abs(s)*.9+Math.abs(c)*.3,0,.95)}
+ function bin(x,z){var G2=w.geo(x,z);G2.box(x,.5,z,.28,.5,.28,0,"#3e5a3a",[.3,0]);G2.box(x,1.02,z,.3,.04,.3,0,"#2a2d31");decorObst(w,x,z,.3,.3,0,1.05)}
+ function hydrant(x,z){var G2=w.geo(x,z);G2.box(x,.35,z,.14,.35,.14,0,"#d8262a",[.5,0]);G2.box(x,.74,z,.1,.06,.1,0,"#e8e4dc");G2.box(x,.45,z,.24,.05,.06,0,"#d8262a");decorObst(w,x,z,.2,.2,0,.8)}
+ function planter(x,z){var G2=w.geo(x,z);G2.box(x,.3,z,.7,.3,.7,0,"#8d8a84",[.05,1]);G2.box(x,.75,z,.6,.22,.6,rnd(),["#3f7a34","#4f8c3a","#5a7d2e"][Math.floor(rnd()*3)],[0,3]);if(rnd()<.6)G2.box(x+.15,.98,z-.1,.12,.06,.12,0,["#ff5d8f","#ffd23a","#ff8a3a","#b88cff"][Math.floor(rnd()*4)]);decorObst(w,x,z,.7,.7,0,1)}
+ function bikes(x,z,h){var G2=w.geo(x,z),ax=Math.abs(Math.sin(h))>.5;for(var i=0;i<3;i++){var o=(i-1)*.8,bx=x+(ax?0:o),bz=z+(ax?o:0),col=["#d8262a","#2a6fd8","#2fa866","#111"][Math.floor(rnd()*4)];
+   G2.box(bx,.5,bz,ax?.7:.03,.03,ax?.03:.7,0,col,[.4,0]);G2.box(bx+(ax?.55:0),.32,bz+(ax?0:.55),ax?.04:.3,.3,ax?.3:.04,0,"#1a1a1a");G2.box(bx-(ax?.55:0),.32,bz-(ax?0:.55),ax?.04:.3,.3,ax?.3:.04,0,"#1a1a1a")}decorObst(w,x,z,ax?.8:1.3,ax?1.3:.8,0,1)}
+ function busStop(x,z,h){var G2=w.geo(x,z),ax=Math.abs(Math.sin(h))>.5,hw=ax?.9:2,hl=ax?2:.9,bk=ax?Math.sign(Math.sin(h)):Math.sign(Math.cos(h));
+  G2.box(x,2.5,z,hw+.15,.08,hl+.15,0,"#2c3440",[.5,9]);G2.box(x-(ax?bk*.8:0),1.25,z-(ax?0:bk*.8),ax?.04:hw,1.2,ax?hl:.04,0,"#9fd0e6",[.8,11]);[[-1,-1],[1,1],[-1,1],[1,-1]].forEach(function(q){G2.box(x+q[0]*hw,1.25,z+q[1]*hl,.05,1.25,.05,0,"#2c3440",[.5,9])});
+  G2.box(x-(ax?bk*.5:0),.45,z-(ax?0:bk*.5),ax?.25:hw*.8,.05,ax?hl*.8:.25,0,"#7a8794");var sx=x+(ax?bk*.2:hw+.5),sz=z+(ax?hl+.5:bk*.2);G2.box(sx,1.5,sz,.04,1.5,.04,0,"#2c3440");G2.box(sx,2.9,sz,.32,.32,.04,0,"#ffd23a",[0,LITE?15:5]);G2.box(sx,2.9,sz+.01,.2,.2,.045,0,"#1f8f4a");
+  if(rnd()<.8)G2.box(x-(ax?bk*.82:0),1.4,z-(ax?0:bk*.82),ax?.05:hw*.55,.7,ax?hl*.55:.05,0,["#ff5d5d","#5db0ff","#ffd23a","#8a5dff"][Math.floor(rnd()*4)],[0,LITE?15:5]);decorObst(w,x,z,hw,hl,0,2.6)}
+ /* Gehwege: in jedem normalen Block */
+ for(var bx=0;bx<N;bx++)for(var bz=0;bz<N;bz++){var x0=O+bx*C+RW,z0=O+bz*C+RW,sides=[[0,1],[0,-1],[1,0],[-1,0]];
+  sides.forEach(function(sd,si){var along=sd[0]===0,edge=along?(sd[1]>0?z0+B-1.9:z0+1.9):(sd[0]>0?x0+B-1.9:x0+1.9),h=along?(sd[1]>0?Math.PI:0):(sd[0]>0?-Math.PI/2:Math.PI/2);
+   var items=[["bench",.42],["bin",.47],["planter",.25],["hydrant",.68],["planter",.78],["bikes",.6]];if((bx*7+bz*3+si)%9===0)items=[["bus",.5],["bin",.36]];
+   items.forEach(function(it){if(it[0]!=="bus"&&rnd()<.25)return;var t=it[1]*B,x=along?x0+t:edge,z=along?edge:z0+t;if(!decorFree(w,x,z,it[0]==="bus"?1.6:.8))return;
+    if(it[0]==="bench")bench(x,z,h);else if(it[0]==="bin")bin(x,z);else if(it[0]==="hydrant")hydrant(x,z);else if(it[0]==="planter")planter(x,z);else if(it[0]==="bikes")bikes(x,z,h);else busStop(x,z,h)})})}
+ /* Gebäude: Markisen, Balkone, Dachtechnik, Werbetafeln */
+ var AW=["#d8262a","#2a6fd8","#2fa866","#e8a32a","#8a5dff","#e85d9a","#1aa3a3"];
+ (w.ob||[]).slice().forEach(function(o,idx){if(o.kind!=="wall"||!(o.top>6)||o.hw<3.5||o.hl<3.5||o.hw>40||o.hl>40)return;var ht=o.top-1.5,G2=w.geo(o.x,o.z),r=rnd();
+  [[0,1],[0,-1],[1,0],[-1,0]].forEach(function(f,fi){var fx=f[0],fz=f[1],len=fx?o.hl:o.hw,px=o.x+fx*(o.hw),pz=o.z+fz*(o.hl);
+   if((idx+fi)%2===0){var col=AW[(idx*3+fi)%AW.length],aw=Math.min(len*.8,8);G2.box(px+fx*.55,3.35,pz+fz*.55,fx?.55:aw,.07,fx?aw:.55,0,col,[.2,0]);G2.box(px+fx*1.08,3.15,pz+fz*1.08,fx?.03:aw,.22,fx?aw:.03,0,col,[.2,0])}
+   if(ht<26&&ht>9&&(idx+fi)%2===1){for(var fl=6.2;fl<ht-2;fl+=6.6)for(var k=-1;k<=1;k+=2){if(len<9&&k>0)continue;var ox=fx?0:k*len*.45,oz=fx?k*len*.45:0;G2.box(px+fx*.5+ox,fl,pz+fz*.5+oz,fx?.5:1.1,.08,fx?1.1:.5,0,"#c9c5bd",[.1,1]);G2.box(px+fx*.98+ox,fl+.5,pz+fz*.98+oz,fx?.03:1.1,.42,fx?1.1:.03,0,"#9fd0e6",[.8,11])}}});
+  if(r<.6){G2.box(o.x-o.hw*.4,ht+1.5,o.z+o.hl*.35,1.1,.6,.8,0,"#a9adb2",[.4,9]);G2.box(o.x-o.hw*.4,ht+2.15,o.z+o.hl*.35,.5,.05,.5,0,"#5d6166")}
+  if(r>.35&&r<.75){G2.cyl(o.x+o.hw*.45,ht+2.6,o.z-o.hl*.45,1.1,1.5,8,"#8b6b4a",[.1,0],"y");G2.box(o.x+o.hw*.45,ht+4.15,o.z-o.hl*.45,1.2,.06,1.2,0,"#5d4630")}
+  if(r>.85&&ht<35){var bw=Math.min(o.hw*.8,7);G2.box(o.x,ht+4,o.z,bw,2,.12,0,["#ff4d6d","#3dd6ff","#ffd23a","#7dff8a"][idx%4],[0,LITE?15:5]);G2.box(o.x,ht+4,o.z-.14,bw*.86,1.6,.03,0,"#ffffff",[0,LITE?15:5]);[-1,1].forEach(function(s){G2.box(o.x+s*bw*.7,ht+1.7,o.z,.1,1.7,.1,0,"#3a3d42")})}
+  if(rnd()<.35){G2.box(o.x+o.hw*.2,ht+3.2,o.z,.05,2,.05,0,"#2e3136");G2.box(o.x+o.hw*.2,ht+5.1,o.z,.5,.04,.04,0,"#2e3136")}});
+ /* zusätzliche Bäume entlang der Straßen */
+ for(var bx2=0;bx2<N;bx2++)for(var bz2=0;bz2<N;bz2++){if((bx2+bz2)%2===0)continue;var X0=O+bx2*C+RW,Z0=O+bz2*C+RW;[[X0+B*.2,Z0+2.6],[X0+B*.8,Z0+B-2.6],[X0+2.6,Z0+B*.22],[X0+B-2.6,Z0+B*.8]].forEach(function(tp){if(decorFree(w,tp[0],tp[1],1.2))w.tree(tp[0],tp[1],rnd,true)})}
+}
+var _mwD=mapWorld;mapWorld=function(id,cb,tr){return _mwD(id,function(){try{var w=G.world;if(w&&w.gridp&&id==="city")cityDecor(w)}catch(e){console.warn(e)}if(cb)cb.apply(this,arguments)},tr)};
 
 </script>
 <script>if("serviceWorker" in navigator&&location.protocol==="https:"&&!/ParkPilotApp/.test(navigator.userAgent))navigator.serviceWorker.register("sw.js").catch(function(){})</script></body></html>

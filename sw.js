@@ -1,4 +1,4 @@
-var C="parkpilot-v2.0.3",F=["./","./index.html","./firebase-config.js","./manifest.webmanifest","./icon-192.png","./icon-512.png","./icon-maskable-512.png"];
+var C="parkpilot-v2.1.0",F=["./","./index.html","./firebase-config.js","./manifest.webmanifest","./icon-192.png","./icon-512.png","./icon-maskable-512.png"];
 self.addEventListener("install",function(e){self.skipWaiting();e.waitUntil(caches.open(C).then(function(c){return c.addAll(F)}))});
 self.addEventListener("activate",function(e){e.waitUntil(caches.keys().then(function(k){return Promise.all(k.filter(function(x){return x.indexOf("parkpilot-")===0&&x!==C}).map(function(x){return caches.delete(x)}))}).then(function(){return self.clients.claim()}))});
 /* Sofort aus dem Speicher starten (offline spielbar), im Hintergrund aktualisieren */
